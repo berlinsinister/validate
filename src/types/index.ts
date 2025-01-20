@@ -35,3 +35,11 @@ export interface ConfigUIItemI {
 export interface ConfigUII {
   [key: string]: ConfigUIItemI;
 }
+
+export interface FieldValidationInfoI {
+  field: string;
+  rule?: {
+    name: string;
+    params?: any;
+  };
+}

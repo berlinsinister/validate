@@ -8,7 +8,7 @@ export const useValidate = (name: string) => {
 
   const { errorMessage, value } = useField<string>(
     fieldName, // 'fullName',
-    rules, // 'required|minLength:3',
+    rules, // 'required|min:3',
     {
       initialValue: model, // 'Ros',
       validateOnValueUpdate: false,

@@ -3,7 +3,7 @@ import { ConfigFieldI } from '@/types';
 export const configFields: ConfigFieldI = {
   fullName: {
     fieldName: 'fullName',
-    rules: 'required|minLength:3|lettersOnly',
+    rules: 'required|min:3|max:30|alpha',
     model: '',
   },
   radio: {
