@@ -1,0 +1,21 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  animation: none !important;
+  transition: none !important;
+}
+
+.form-group {
+  width: 500px;
+  padding: 20px;
+  border: 1px solid #cccccc;
+}
+
+.error {
+  font-size: 12px;
+  color: #C10015;
+}

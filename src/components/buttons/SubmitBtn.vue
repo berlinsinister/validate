@@ -1,0 +1,10 @@
+<template>
+  <q-btn
+    type="submit"
+    label="Submit"
+    color="primary"
+    no-caps
+    unelevated
+    class="q-mt-md"
+ />
+</template>
