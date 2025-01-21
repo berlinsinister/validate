@@ -5,12 +5,9 @@ export interface OptionI {
   value: string | boolean;
 }
 
-export interface PropsI {
+export interface UserFieldPropsI {
   componentName: string;
-  modelValue: string;
-  errorMessage?: string;
-  label?: string;
-  options?: OptionI[] | string[];
+  fieldName: string;
 }
 
 export interface ConfigFieldI {
@@ -42,4 +39,13 @@ export interface FieldValidationInfoI {
     name: string;
     params?: any;
   };
+}
+
+export interface ConfigDisplayItemI {
+  component: string;
+  label: string;
+}
+
+export interface ConfigDisplayI {
+  options: ConfigDisplayItemI[];
 }

@@ -31,7 +31,7 @@ export const configUI = ref<ConfigUII>({
     subtitleStyles,
     componentName: 'q-input',
     component: 'form-input',
-    isVisible: true,
+    isVisible: false,
   },
   radio: {
     title: 'Pick an option',
@@ -40,7 +40,7 @@ export const configUI = ref<ConfigUII>({
     subtitleStyles,
     componentName: 'q-option-group',
     component: 'form-radio',
-    isVisible: true,
+    isVisible: false,
   },
   dropdown: {
     title: 'Pick style for the elements',
@@ -49,6 +49,6 @@ export const configUI = ref<ConfigUII>({
     subtitleStyles,
     componentName: 'q-select',
     component: 'form-dropdown',
-    isVisible: true,
+    isVisible: false,
   },
 });

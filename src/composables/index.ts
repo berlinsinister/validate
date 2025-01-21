@@ -23,14 +23,13 @@ export const useValidate = (name: string) => {
 }
 
 export const useRenderUI = (fieldName: string, modelValue: string) => {
-  // config1.value.inputs[0].isVisible = false;
-
   // now works for radios only, add more conditions
   // TODO: refine this logic;
 
-  console.log('render UI', fieldName, modelValue);
+  // console.log('render UI', fieldName, modelValue);
 
-  if (modelValue === '0') {
+  if (modelValue === '0' || modelValue === '1') {
+    // console.log('GETS HERE');
     const bool = modelValue === '0' ? false : true;
     configUI.value[fieldName].isVisible = bool;
   }

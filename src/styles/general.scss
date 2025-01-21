@@ -10,9 +10,16 @@
 }
 
 .form-group {
-  width: 500px;
-  padding: 20px;
   border: 1px solid #cccccc;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 500px;
+
+  border: 2px solid blue;
 }
 
 .error {
