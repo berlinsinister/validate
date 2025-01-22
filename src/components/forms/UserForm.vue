@@ -1,21 +1,7 @@
 <template>
   <q-form @submit="onSubmit">
-
     <div class="user-form">
-      
-      <!-- TODO: maybe use UserDropdown component and use alias for useValidate, e.g. usepopulate -->
-      <!-- and populate the field with required data, just without rules and validation stuff -->
-      <q-select
-        v-model="model"
-        :options="options"
-        filled
-        dense
-        multiple
-        option-value="component"
-        option-label="label"
-        @update:model-value="onUpdateModelValue"
-        class="q-mb-xl"
-      />
+      <user-checkbox />
 
       <template
         v-for="({ component, isVisible, title, subtitle, titleStyles, subtitleStyles }, idx) in forms"
@@ -37,39 +23,28 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useForm } from 'vee-validate';
 
-import { ConfigDisplayItemI } from '@/types';
-import { configDisplay } from '@/config/configDisplay';
 import { configUI } from '@/config/configUI';
 
+import UserCheckbox from '@/components/inputs/UserCheckbox.vue';
 import SubmitBtn from '@/components/buttons/SubmitBtn.vue';
 
 const { handleSubmit } = useForm();
 
 const onSubmit = handleSubmit((values) => {
+  // now with checkboxes the values include checkboxes values as well.
   console.log('FORM', values);
 });
 
 const forms = computed(() => {
   const { fullName, radio, dropdown } = configUI.value;
 
-  return [fullName, radio, dropdown];
+  // return [fullName, radio, dropdown];
+  return [fullName, radio, dropdown].sort((a, b) => a.order - b.order);
 });
 
-// const model = ref<ConfigDisplayItemI[]>([]);
-const model = ref<string[]>([]);
-const options = computed(() => configDisplay.options);
-
 // TODO: add order for forms?
-const onUpdateModelValue = (selectedItems: ConfigDisplayItemI[]) => {
-  // console.log('selected', selectedItems);
-  const visibleForms = selectedItems.map((item) => item.component);
-  
-  Object.keys(configUI.value).forEach((key) => {
-    // set isVisible to true if the key is in visibleForms, otherwise false
-    configUI.value[key].isVisible = visibleForms.includes(key);
-  });
-};
+// TODO: add red bg for errors
 </script>

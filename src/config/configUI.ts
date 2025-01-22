@@ -32,6 +32,7 @@ export const configUI = ref<ConfigUII>({
     componentName: 'q-input',
     component: 'form-input',
     isVisible: false,
+    order: 1,
   },
   radio: {
     title: 'Pick an option',
@@ -41,6 +42,7 @@ export const configUI = ref<ConfigUII>({
     componentName: 'q-option-group',
     component: 'form-radio',
     isVisible: false,
+    order: 2,
   },
   dropdown: {
     title: 'Pick style for the elements',
@@ -50,5 +52,6 @@ export const configUI = ref<ConfigUII>({
     componentName: 'q-select',
     component: 'form-dropdown',
     isVisible: false,
+    order: 3,
   },
 });

@@ -21,4 +21,14 @@ export const configFields: ConfigFieldI = {
     model: '',
     options: ['vienas', 'du', 'trys', 'keturi'],
   },
+  checkbox: {
+    fieldName: 'checkbox',
+    rules: '',
+    model: [],
+    options: [
+      { label: 'Full Name', value: 'fullName' },
+      { label: 'Radio', value: 'radio' },
+      { label: 'Dropdown', value: 'dropdown' },
+    ],
+  },
 };

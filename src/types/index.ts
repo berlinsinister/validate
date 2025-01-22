@@ -14,7 +14,7 @@ export interface ConfigFieldI {
   [key: string]: {
     fieldName: string;
     rules: string;
-    model: string;
+    model: string | string[];
     options?: OptionI[] | string[];
   }
 }
@@ -27,6 +27,7 @@ export interface ConfigUIItemI {
   componentName: string;
   component: string;
   isVisible: boolean;
+  order: number;
 }
 
 export interface ConfigUII {
@@ -39,13 +40,4 @@ export interface FieldValidationInfoI {
     name: string;
     params?: any;
   };
-}
-
-export interface ConfigDisplayItemI {
-  component: string;
-  label: string;
-}
-
-export interface ConfigDisplayI {
-  options: ConfigDisplayItemI[];
 }

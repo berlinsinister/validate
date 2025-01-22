@@ -6,7 +6,7 @@ import { configUI }     from '@/config/configUI';
 export const useValidate = (name: string) => {
   const { fieldName, rules, model, options } = configFields[name];
 
-  const { errorMessage, value } = useField<string>(
+  const { errorMessage, value } = useField<string | string[]>(
     fieldName, // 'fullName',
     rules, // 'required|min:3',
     {
@@ -22,19 +22,23 @@ export const useValidate = (name: string) => {
   }
 }
 
-export const useRenderUI = (fieldName: string, modelValue: string) => {
-  // now works for radios only, add more conditions
-  // TODO: refine this logic;
-
-  // console.log('render UI', fieldName, modelValue);
-
-  if (modelValue === '0' || modelValue === '1') {
-    // console.log('GETS HERE');
+export const useRender = (fieldName: string, modelValue: string | string[]) => {
+  // toggle visibility of fullName only // hardcoded
+  if (fieldName === 'radio') {
     const bool = modelValue === '0' ? false : true;
-    configUI.value[fieldName].isVisible = bool;
+    configUI.value['fullName'].isVisible = bool;
   }
 
+  // color
   if (modelValue === 'trys') {
     configUI.value['radio'].titleStyles.backgroundColor = 'aquamarine';
+  }
+
+  // toggle visibility from checkboxes
+  if (fieldName === 'checkbox') {
+    Object.keys(configUI.value).forEach((key) => {
+      // set isVisible to true if the key is in visibleForms, otherwise false
+      configUI.value[key].isVisible = modelValue.includes(key);
+    });
   }
 }

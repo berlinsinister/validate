@@ -9,8 +9,6 @@ configure({
 
     if (!rule) return `The ${displayFieldName} field is invalid.`;
 
-    console.log('RULE', rule);
-
     const messages: Record<string, string> = {
       required: `${displayFieldName} field is required`,
       min: `${displayFieldName} field must be at least ${rule.params} characters length`,

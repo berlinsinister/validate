@@ -4,7 +4,8 @@
     label="Submit"
     color="primary"
     no-caps
+    rounded
     unelevated
-    class="q-mt-md"
+    class="q-mt-auto"
  />
 </template>
