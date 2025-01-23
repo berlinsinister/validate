@@ -9,8 +9,12 @@ configure({
 
     if (!rule) return `The ${displayFieldName} field is invalid.`;
 
+    const requiredRuleErrorMsg = field === 'checkbox'
+      ? 'You must check at least one checkbox'
+      : `${displayFieldName} field is required`;
+
     const messages: Record<string, string> = {
-      required: `${displayFieldName} field is required`,
+      required: requiredRuleErrorMsg,
       min: `${displayFieldName} field must be at least ${rule.params} characters length`,
       max: `${displayFieldName} field must be at most ${rule.params} characters long`,
       alpha: `${displayFieldName} field should only contain letters`,

@@ -1,7 +1,14 @@
 <template>
   <q-form @submit="onSubmit">
     <div class="user-form">
-      <user-checkbox />
+      <div>
+        <p>
+          <strong>
+            * Start creating a form by selectin forms' elements
+          </strong>
+        </p>
+        <user-checkbox />
+      </div>
 
       <template
         v-for="({ component, isVisible, title, subtitle, titleStyles, subtitleStyles }, idx) in forms"

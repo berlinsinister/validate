@@ -23,7 +23,7 @@ export const configFields: ConfigFieldI = {
   },
   checkbox: {
     fieldName: 'checkbox',
-    rules: '',
+    rules: 'required',
     model: [],
     options: [
       { label: 'Full Name', value: 'fullName' },
