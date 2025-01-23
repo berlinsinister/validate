@@ -11,15 +11,17 @@ export const configFields: ConfigFieldI = {
     rules: 'required',
     model: '',
     options: [
-      { label: 'Parodyti', value: '1' },
-      { label: 'Paslepti', value: '0' }, // maybe change to real true / false?
+      { label: 'Spring', value: 'spring' },
+      { label: 'Summer', value: 'summer' },
+      { label: 'Autumn', value: 'autumn' },
+      { label: 'Winter', value: 'winter' },
     ],
   },
   dropdown: {
     fieldName: 'dropdown',
     rules: 'required',
     model: '',
-    options: ['vienas', 'du', 'trys', 'keturi'],
+    options: ['Apple', 'Google', 'Facebook', 'Open AI'],
   },
   checkbox: {
     fieldName: 'checkbox',

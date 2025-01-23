@@ -7,10 +7,10 @@ export const useValidate = (name: string) => {
   const { fieldName, rules, model, options } = configFields[name];
 
   const { errorMessage, value } = useField<string | string[]>(
-    fieldName, // 'fullName',
-    rules, // 'required|min:3',
+    fieldName,
+    rules,
     {
-      initialValue: model, // 'Ros',
+      initialValue: model,
       validateOnValueUpdate: false,
     },
   );
@@ -22,23 +22,35 @@ export const useValidate = (name: string) => {
   }
 }
 
-export const useRender = (fieldName: string, modelValue: string | string[]) => {
-  // toggle visibility of fullName only // hardcoded
-  if (fieldName === 'radio') {
-    const bool = modelValue === '0' ? false : true;
-    configUI.value['fullName'].isVisible = bool;
-  }
+// render ui
+export const useRender = (
+  renderType: 'visibility' | 'style',
+  fieldName: string,
+  modelValue: string | string[],
+  layout: any,
+) => {
+  console.log('use render');
 
-  // color
-  if (modelValue === 'trys') {
-    configUI.value['radio'].titleStyles.backgroundColor = 'aquamarine';
-  }
+  const fields = ['fullName', 'radio', 'dropdown'];
 
-  // toggle visibility from checkboxes
-  if (fieldName === 'checkbox') {
-    Object.keys(configUI.value).forEach((key) => {
-      // set isVisible to true if the key is in visibleForms, otherwise false
-      configUI.value[key].isVisible = modelValue.includes(key);
-    });
+  switch (renderType) {
+    case 'visibility':
+      Object.keys(configUI.value).forEach((key) => {
+        configUI.value[key].isVisible = modelValue.includes(key);
+      });
+      break;
+
+    case 'style':
+      fields.forEach((item) => {
+        configUI.value[item].titleStyles.fontSize = layout.styles.fontSize;
+        configUI.value[item].titleStyles.backgroundColor = layout.styles.backgroundColor;
+        configUI.value[item].titleStyles.color = layout.styles.color;
+
+        configUI.value[item].order = layout.order[item];
+      });
+      break;
+  
+    default:
+      break;
   }
 }

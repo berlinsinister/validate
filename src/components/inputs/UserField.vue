@@ -49,7 +49,8 @@ const type = computed<string>(() => (props.fieldName === 'radio' || props.fieldN
 const error = computed<boolean>(() => (props.fieldName === 'radio' || props.fieldName === 'checkbox') && !!errorMessage);
 
 const onUpdateModelValue = (newValue: string | string[]): void => {
-  // console.log('new value', newValue);
-  useRender(props.fieldName, newValue);
+  if (props.fieldName === 'checkbox') {
+    useRender('visibility', props.fieldName, newValue, null);
+  }
 };
 </script>

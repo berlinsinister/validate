@@ -25,8 +25,8 @@ function createTitleStyles() {
 
 export const configUI = ref<ConfigUII>({
   fullName: {
-    title: 'Enter full name',
-    subtitle: 'some subtitle',
+    title: 'Lets get to know you',
+    subtitle: 'What should we call you?',
     titleStyles: createTitleStyles(),
     subtitleStyles,
     componentName: 'q-input',
@@ -35,8 +35,8 @@ export const configUI = ref<ConfigUII>({
     order: 1,
   },
   radio: {
-    title: 'Pick an option',
-    subtitle: 'some subtitle',
+    title: 'What is your favorite season',
+    subtitle: 'Which time of year makes you feel at ease?',
     titleStyles: createTitleStyles(),
     subtitleStyles,
     componentName: 'q-option-group',
@@ -45,8 +45,8 @@ export const configUI = ref<ConfigUII>({
     order: 2,
   },
   dropdown: {
-    title: 'Pick style for the elements',
-    subtitle: 'some subtitle',
+    title: 'Choose your go-to tech',
+    subtitle: 'What gadget or innovation excites you the most?',
     titleStyles: createTitleStyles(),
     subtitleStyles,
     componentName: 'q-select',
