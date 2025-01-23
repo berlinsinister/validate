@@ -1,0 +1,107 @@
+{
+  "ui": {
+    "fullName": {
+      "title": "Lets get to know you",
+      "subtitle": "What should we call you?",
+      "titleStyles": {
+        "marginBottom": "4px",
+        "padding": "4px 12px",
+        "fontSize": "16px",
+        "lineHeight": "28px",
+        "color": "#ffffff",
+        "backgroundColor": "#2493bd"
+      },
+      "subtitleStyles": {
+        "marginBottom": "16px",
+        "fontSize": "14px",
+        "lineHeight": "18px",
+        "color": "#333333",
+        "backgroundColor": "#ffffff"
+      },
+      "componentName": "q-input",
+      "component": "form-input",
+      "isVisible": false,
+      "order": 1
+    },
+    "radio": {
+      "title": "What is your favorite season",
+      "subtitle": "Which time of year makes you feel at ease?",
+      "titleStyles": {
+        "marginBottom": "4px",
+        "padding": "4px 12px",
+        "fontSize": "16px",
+        "lineHeight": "28px",
+        "color": "#ffffff",
+        "backgroundColor": "#2493bd"
+      },
+      "subtitleStyles": {
+        "marginBottom": "16px",
+        "fontSize": "14px",
+        "lineHeight": "18px",
+        "color": "#333333",
+        "backgroundColor": "#ffffff"
+      },
+      "componentName": "q-option-group",
+      "component": "form-radio",
+      "isVisible": false,
+      "order": 2
+    },
+    "dropdown": {
+      "title": "Choose your go-to tech",
+      "subtitle": "What gadget or innovation excites you the most?",
+      "titleStyles": {
+        "marginBottom": "4px",
+        "padding": "4px 12px",
+        "fontSize": "16px",
+        "lineHeight": "28px",
+        "color": "#ffffff",
+        "backgroundColor": "#2493bd"
+      },
+      "subtitleStyles": {
+        "marginBottom": "16px",
+        "fontSize": "14px",
+        "lineHeight": "18px",
+        "color": "#333333",
+        "backgroundColor": "#ffffff"
+      },
+      "componentName": "q-select",
+      "component": "form-dropdown",
+      "isVisible": false,
+      "order": 3
+    }
+  },
+  "fields": {
+    "fullName": {
+      "fieldName": "fullName",
+      "rules": "required|min:3|max:30|alpha",
+      "model": ""
+    },
+    "radio": {
+      "fieldName": "radio",
+      "rules": "required",
+      "model": "",
+      "options": [
+        { "label": "Spring", "value": "spring" },
+        { "label": "Summer", "value": "summer" },
+        { "label": "Autumn", "value": "autumn" },
+        { "label": "Winter", "value": "winter" }
+      ]
+    },
+    "dropdown": {
+      "fieldName": "dropdown",
+      "rules": "required",
+      "model": "",
+      "options": ["Apple", "Google", "Facebook", "Open AI"]
+    },
+    "checkbox": {
+      "fieldName": "checkbox",
+      "rules": "required",
+      "model": [],
+      "options": [
+        { "label": "Full Name", "value": "fullName" },
+        { "label": "Radio", "value": "radio" },
+        { "label": "Dropdown", "value": "dropdown" }
+      ]
+    }
+  }
+}

@@ -1,6 +1,5 @@
-import { useField }     from 'vee-validate';
-import { configFields } from '@/config/configFields';
-import { configUI }     from '@/config/configUI';
+import { useField } from 'vee-validate';
+import { configFields, configUI } from '@/config';
 
 // validation
 export const useValidate = (name: string) => {

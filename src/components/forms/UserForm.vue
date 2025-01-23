@@ -43,7 +43,7 @@ import { ref, computed } from 'vue';
 import { useForm } from 'vee-validate';
 
 import { useRender } from '@/composables';
-import { configUI } from '@/config/configUI';
+import { configUI } from '@/config';
 
 import UserCheckbox from '@/components/inputs/UserCheckbox.vue';
 import SubmitBtn from '@/components/buttons/SubmitBtn.vue';
