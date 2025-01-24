@@ -7,10 +7,10 @@ configure({
   generateMessage: ({ field, rule }: FieldValidationInfoI) => {
     const displayFieldName = camelCaseToWords(field);
 
-    if (!rule) return `The ${displayFieldName} field is invalid.`;
+    if (!rule) return `the ${displayFieldName} field is invalid.`;
 
     const requiredRuleErrorMsg = field === 'checkbox'
-      ? 'You must check at least one checkbox'
+      ? 'you must check at least one checkbox'
       : `${displayFieldName} field is required`;
 
     const messages: Record<string, string> = {

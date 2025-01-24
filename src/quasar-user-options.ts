@@ -2,13 +2,14 @@ import "./styles/quasar.scss";
 import "@quasar/extras/roboto-font/roboto-font.css";
 import "@quasar/extras/material-icons/material-icons.css";
 
-import { QInput } from 'quasar';
+import { QInput, QOptionGroup, QSelect } from 'quasar';
 
-// To be used on app.use(Quasar, { ... })
 export default {
   config: {},
   plugins: {},
   components: {
-    QInput, // Explicitly register QInput if required
+    QInput,
+    QOptionGroup,
+    QSelect,
   },
 };

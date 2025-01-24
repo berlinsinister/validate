@@ -5,15 +5,15 @@
       "subtitle": "What should we call you?",
       "titleStyles": {
         "marginBottom": "4px",
-        "padding": "4px 12px",
-        "fontSize": "16px",
+        "padding": "0px",
+        "fontSize": "14px",
         "lineHeight": "28px",
-        "color": "#ffffff",
-        "backgroundColor": "#2493bd"
+        "color": "#333333",
+        "backgroundColor": "#ffffff"
       },
       "subtitleStyles": {
         "marginBottom": "16px",
-        "fontSize": "14px",
+        "fontSize": "12px",
         "lineHeight": "18px",
         "color": "#333333",
         "backgroundColor": "#ffffff"
@@ -28,15 +28,15 @@
       "subtitle": "Which time of year makes you feel at ease?",
       "titleStyles": {
         "marginBottom": "4px",
-        "padding": "4px 12px",
-        "fontSize": "16px",
+        "padding": "0px",
+        "fontSize": "14px",
         "lineHeight": "28px",
-        "color": "#ffffff",
-        "backgroundColor": "#2493bd"
+        "color": "#333333",
+        "backgroundColor": "#ffffff"
       },
       "subtitleStyles": {
         "marginBottom": "16px",
-        "fontSize": "14px",
+        "fontSize": "12px",
         "lineHeight": "18px",
         "color": "#333333",
         "backgroundColor": "#ffffff"
@@ -51,15 +51,15 @@
       "subtitle": "What gadget or innovation excites you the most?",
       "titleStyles": {
         "marginBottom": "4px",
-        "padding": "4px 12px",
-        "fontSize": "16px",
+        "padding": "0px",
+        "fontSize": "14px",
         "lineHeight": "28px",
-        "color": "#ffffff",
-        "backgroundColor": "#2493bd"
+        "color": "#333333",
+        "backgroundColor": "#ffffff"
       },
       "subtitleStyles": {
         "marginBottom": "16px",
-        "fontSize": "14px",
+        "fontSize": "12px",
         "lineHeight": "18px",
         "color": "#333333",
         "backgroundColor": "#ffffff"

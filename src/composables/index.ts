@@ -1,5 +1,7 @@
 import { useField } from 'vee-validate';
+import { setCssVar } from 'quasar'
 import { configFields, configUI } from '@/config';
+import { USER_INTERACTION_FIELDS } from '@/config/constants';
 
 // validation
 export const useValidate = (name: string) => {
@@ -28,10 +30,6 @@ export const useRender = (
   modelValue: string | string[],
   layout: any,
 ) => {
-  console.log('use render');
-
-  const fields = ['fullName', 'radio', 'dropdown'];
-
   switch (renderType) {
     case 'visibility':
       Object.keys(configUI.value).forEach((key) => {
@@ -40,13 +38,15 @@ export const useRender = (
       break;
 
     case 'style':
-      fields.forEach((item) => {
+      USER_INTERACTION_FIELDS.forEach((item) => {
         configUI.value[item].titleStyles.fontSize = layout.styles.fontSize;
         configUI.value[item].titleStyles.backgroundColor = layout.styles.backgroundColor;
         configUI.value[item].titleStyles.color = layout.styles.color;
 
         configUI.value[item].order = layout.order[item];
       });
+
+      setCssVar('primary', layout.styles.backgroundColor);
       break;
   
     default:

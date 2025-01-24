@@ -4,8 +4,13 @@
       label="Config select"
       v-model="select"
       :options="options"
-      class="q-mb-lg"
+      dense
+      class="q-mb-sm"
     />
+
+    <p class="q-mb-xl">
+      selected values: {{ userSelectedValues }}
+    </p>
 
     <q-form @submit="onSubmit">
       <div class="user-form">
@@ -19,8 +24,8 @@
         </div>
 
         <template
-          v-for="({ component, isVisible, title, subtitle, titleStyles, subtitleStyles }, idx) in forms"
-          :key="idx"
+          v-for="({ component, isVisible, title, subtitle, titleStyles, subtitleStyles }) in forms"
+          :key="component"
         >
           <component
             v-if="isVisible"
@@ -44,9 +49,13 @@ import { useForm } from 'vee-validate';
 
 import { useRender } from '@/composables';
 import { configUI } from '@/config';
+import { USER_INTERACTION_FIELDS } from '@/config/constants';
+import { UserSelectedValueI } from '@/types';
 
 import UserCheckbox from '@/components/inputs/UserCheckbox.vue';
 import SubmitBtn from '@/components/buttons/SubmitBtn.vue';
+
+const userSelectedValues = ref<UserSelectedValueI>({});
 
 const select = ref<any>(null);
 const options = [
@@ -86,6 +95,10 @@ const { handleSubmit } = useForm();
 
 const onSubmit = handleSubmit((values) => {
   console.log('FORM', values);
+
+  USER_INTERACTION_FIELDS.forEach((item) => {
+    userSelectedValues.value[item] = values[item]
+  });
 });
 
 const forms = computed(() => {

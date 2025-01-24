@@ -1,5 +1,5 @@
 <template>
-  <div class="form-group">
+  <div>
     <h2 :style="titleStyles">
       {{ title }}
     </h2>

@@ -41,3 +41,7 @@ export interface FieldValidationInfoI {
     params?: any;
   };
 }
+
+export interface UserSelectedValueI {
+  [key: string] : string;
+}
