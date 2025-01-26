@@ -64,6 +64,7 @@ export const useRender = (
 export const useAttributes = () => {
   const attrs = useAttrs();
   
+  const label: string = attrs['label'] as string || '';
   const componentName: string = attrs['component-name'] as string || '';
   const fieldName: string = attrs['field-name'] as string || '';
 
@@ -73,6 +74,7 @@ export const useAttributes = () => {
   const subtitleStyles: StyleValue = attrs['subtitle-styles'] as StyleValue || {};
 
   return {
+    label,
     componentName,
     fieldName,
     title,

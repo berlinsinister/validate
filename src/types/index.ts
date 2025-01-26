@@ -6,6 +6,7 @@ export interface OptionI {
 }
 
 export interface UserFieldPropsI {
+  label: string;
   componentName: string;
   fieldName: string;
 }
@@ -21,6 +22,7 @@ export interface ConfigFieldI {
 
 export interface ConfigUIItemI {
   id: string;
+  label: string;
   title: string;
   subtitle: string;
   titleStyles: StyleValue;

@@ -2,8 +2,9 @@
   "ui": {
     "fullName": {
       "id": "FN_0001",
+      "label": "First name",
       "title": "Lets get to know you",
-      "subtitle": "What should we call you?",
+      "subtitle": "Enter your first name using [A-Z][a-z] format only",
       "titleStyles": {
         "marginBottom": "4px",
         "padding": "0px",
@@ -27,6 +28,7 @@
     },
     "radio": {
       "id": "FN_0002",
+      "label": "",
       "title": "What is your favorite season",
       "subtitle": "Which time of year makes you feel at ease?",
       "titleStyles": {
@@ -52,6 +54,7 @@
     },
     "dropdown": {
       "id": "FN_0003",
+      "label": "Fave tech",
       "title": "Choose your go-to tech",
       "subtitle": "What gadget or innovation excites you the most?",
       "titleStyles": {

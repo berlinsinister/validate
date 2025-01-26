@@ -4,19 +4,16 @@
       <component
         v-model="value"
         :is="props.componentName"
+        :label="props.label"
+        :type="type"
+        :options="fieldOptions"
         :error="!!errorMessage"
         :error-message="errorMessage"
-        :options="fieldOptions"
-
+        :bg-color="errorBg"
         filled
         dense
         inline
         hide-bottom-space
-
-        :type="type"
-
-        :bg-color="errorBg"
-
         @update:model-value="onUpdateModelValue"
       />
     </div>

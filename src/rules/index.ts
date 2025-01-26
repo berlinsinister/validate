@@ -1,16 +1,16 @@
 import { defineRule, configure } from 'vee-validate';
 import { required, min, max, alpha } from '@vee-validate/rules';
 import { FieldValidationInfoI } from '@/types';
-import { camelCaseToWords } from '@/helpers';
+import { FIELDS_NAMES } from '@/config/constants';
 
 configure({
   generateMessage: ({ field, rule }: FieldValidationInfoI) => {
-    const displayFieldName = camelCaseToWords(field);
+    const displayFieldName = field === FIELDS_NAMES.FULLNAME ? 'first name' : field;
 
     if (!rule) return `the ${displayFieldName} field is invalid.`;
 
-    const requiredRuleErrorMsg = field === 'checkbox'
-      ? 'you must check at least one checkbox'
+    const requiredRuleErrorMsg = field === FIELDS_NAMES.CHECKBOX
+      ? 'you must tick at least one checkbox'
       : `${displayFieldName} field is required`;
 
     const messages: Record<string, string> = {

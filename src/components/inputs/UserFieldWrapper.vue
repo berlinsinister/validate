@@ -1,5 +1,6 @@
 <template>
   <user-field
+    :label="label"
     :component-name="componentName"
     :field-name="fieldName"
   />
@@ -7,5 +8,5 @@
 
 <script setup lang="ts">
 import { useAttributes } from '@/composables';
-const { componentName, fieldName } = useAttributes();
+const { label, componentName, fieldName } = useAttributes();
 </script>

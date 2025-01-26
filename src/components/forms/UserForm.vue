@@ -24,12 +24,13 @@
         </div>
 
         <template
-          v-for="({ id, component, isVisible, componentName, fieldName, title, subtitle, titleStyles, subtitleStyles }) in forms"
+          v-for="({ id, component, isVisible, label, componentName, fieldName, title, subtitle, titleStyles, subtitleStyles }) in forms"
           :key="id"
         >
           <component
             v-if="isVisible"
             :is="component"
+            :label="label"
             :component-name="componentName"
             :field-name="fieldName"
             :title="title"
