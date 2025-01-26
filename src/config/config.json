@@ -77,6 +77,32 @@
       "component": "form-dropdown",
       "isVisible": false,
       "order": 3
+    },
+    "checkbox": {
+      "id": "FN_0004",
+      "label": "",
+      "title": "Start creating a form by selectin forms' elements",
+      "subtitle": "",
+      "titleStyles": {
+        "marginBottom": "4px",
+        "padding": "0px",
+        "fontSize": "14px",
+        "lineHeight": "28px",
+        "color": "#333333",
+        "backgroundColor": "#ffffff"
+      },
+      "subtitleStyles": {
+        "marginBottom": "16px",
+        "fontSize": "12px",
+        "lineHeight": "18px",
+        "color": "#333333",
+        "backgroundColor": "#ffffff"
+      },
+      "componentName": "q-option-group",
+      "fieldName": "checkbox",
+      "component": "form-checkbox",
+      "isVisible": true,
+      "order": 0
     }
   },
   "fields": {

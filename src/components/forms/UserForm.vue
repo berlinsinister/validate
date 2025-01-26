@@ -14,15 +14,6 @@
 
     <q-form @submit="onSubmit">
       <div class="user-form">
-        <div>
-          <p>
-            <strong>
-              Start creating a form by selectin forms' elements
-            </strong>
-          </p>
-          <user-checkbox />
-        </div>
-
         <template
           v-for="({ id, component, isVisible, label, componentName, fieldName, title, subtitle, titleStyles, subtitleStyles }) in forms"
           :key="id"
@@ -55,7 +46,6 @@ import { configUI } from '@/config';
 import { USER_INTERACTION_FIELDS } from '@/config/constants';
 import { UserSelectedValueI, SelectConfigItemI } from '@/types';
 
-import UserCheckbox from '@/components/inputs/UserCheckbox.vue';
 import SubmitBtn from '@/components/buttons/SubmitBtn.vue';
 
 const userSelectedValues = ref<UserSelectedValueI>({});
@@ -109,8 +99,8 @@ const forms = computed(() => {
     useRender('style', '', select.value.layout);
   }
   
-  const { fullName, radio, dropdown } = configUI.value;
+  const { checkbox, fullName, radio, dropdown } = configUI.value;
 
-  return [fullName, radio, dropdown].sort((a, b) => a.order - b.order);
+  return [checkbox, fullName, radio, dropdown].sort((a, b) => a.order - b.order);
 });
 </script>

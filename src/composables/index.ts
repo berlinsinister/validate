@@ -42,6 +42,8 @@ export const useRender = (
       Object.keys(configUI.value).forEach((key) => {
         configUI.value[key].isVisible = modelValue.includes(key);
       });
+
+      configUI.value.checkbox.isVisible = true;
       break;
 
     case 'style':
