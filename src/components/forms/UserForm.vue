@@ -15,19 +15,12 @@
     <q-form @submit="onSubmit">
       <div class="user-form">
         <template
-          v-for="({ id, component, isVisible, label, componentName, fieldName, title, subtitle, titleStyles, subtitleStyles }) in forms"
+          v-for="({ id, isVisible, fieldName }) in forms"
           :key="id"
         >
-          <component
+          <form-base
             v-if="isVisible"
-            :is="component"
-            :label="label"
-            :component-name="componentName"
             :field-name="fieldName"
-            :title="title"
-            :subtitle="subtitle"
-            :title-styles="titleStyles"
-            :subtitle-styles="subtitleStyles"
           />
         </template>
 
@@ -46,6 +39,7 @@ import { configUI } from '@/config';
 import { USER_INTERACTION_FIELDS } from '@/config/constants';
 import { UserSelectedValueI, SelectConfigItemI } from '@/types';
 
+import FormBase from '@/components/forms/FormBase.vue';
 import SubmitBtn from '@/components/buttons/SubmitBtn.vue';
 
 const userSelectedValues = ref<UserSelectedValueI>({});

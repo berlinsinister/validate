@@ -1,5 +1,3 @@
-import { useAttrs } from 'vue';
-import type { StyleValue } from 'vue';
 import { useField } from 'vee-validate';
 import { setCssVar } from 'quasar'
 
@@ -63,22 +61,13 @@ export const useRender = (
   }
 }
 
-export const useAttributes = () => {
-  const attrs = useAttrs();
-  
-  const label: string = attrs['label'] as string || '';
-  const componentName: string = attrs['component-name'] as string || '';
-  const fieldName: string = attrs['field-name'] as string || '';
-
-  const title: string = attrs['title'] as string || '';
-  const subtitle: string = attrs['subtitle'] as string || '';
-  const titleStyles: StyleValue = attrs['title-styles'] as StyleValue || {};
-  const subtitleStyles: StyleValue = attrs['subtitle-styles'] as StyleValue || {};
+export const useComponentData = (name: string) => {
+  const { label, fieldName, componentName, title, subtitle, titleStyles, subtitleStyles } = configUI.value[name];
 
   return {
     label,
-    componentName,
     fieldName,
+    componentName,
     title,
     subtitle,
     titleStyles,

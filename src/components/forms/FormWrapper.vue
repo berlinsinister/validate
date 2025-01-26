@@ -11,6 +11,9 @@
 </template>
   
 <script setup lang="ts">
-import { useAttributes } from '@/composables';
-const { title, subtitle, titleStyles, subtitleStyles } = useAttributes();
+import { useComponentData } from '@/composables';
+
+const props = defineProps<{ fieldName: string }>();
+
+const { title, subtitle, titleStyles, subtitleStyles } = useComponentData(props.fieldName);
 </script>
