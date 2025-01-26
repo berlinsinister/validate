@@ -112,6 +112,4 @@ const forms = computed(() => {
 
   return [fullName, radio, dropdown].sort((a, b) => a.order - b.order);
 });
-
-// TODO: add red bg for errors
 </script>
