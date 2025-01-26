@@ -1,10 +1,9 @@
 <template>
-  <form-wrapper v-bind="$attrs">
-    <user-input />
+  <form-wrapper>
+    <user-input v-bind="$attrs" />
   </form-wrapper>
 </template>
 
 <script setup lang="ts">
-import FormWrapper from '@/components/forms/FormWrapper.vue';
 import UserInput from '@/components/inputs/UserInput.vue';
 </script>

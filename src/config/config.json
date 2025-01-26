@@ -1,6 +1,7 @@
 {
   "ui": {
     "fullName": {
+      "id": "FN_0001",
       "title": "Lets get to know you",
       "subtitle": "What should we call you?",
       "titleStyles": {
@@ -19,11 +20,13 @@
         "backgroundColor": "#ffffff"
       },
       "componentName": "q-input",
+      "fieldName": "fullName",
       "component": "form-input",
       "isVisible": false,
       "order": 1
     },
     "radio": {
+      "id": "FN_0002",
       "title": "What is your favorite season",
       "subtitle": "Which time of year makes you feel at ease?",
       "titleStyles": {
@@ -42,11 +45,13 @@
         "backgroundColor": "#ffffff"
       },
       "componentName": "q-option-group",
+      "fieldName": "radio",
       "component": "form-radio",
       "isVisible": false,
       "order": 2
     },
     "dropdown": {
+      "id": "FN_0003",
       "title": "Choose your go-to tech",
       "subtitle": "What gadget or innovation excites you the most?",
       "titleStyles": {
@@ -65,6 +70,7 @@
         "backgroundColor": "#ffffff"
       },
       "componentName": "q-select",
+      "fieldName": "dropdown",
       "component": "form-dropdown",
       "isVisible": false,
       "order": 3

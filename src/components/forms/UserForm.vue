@@ -24,12 +24,14 @@
         </div>
 
         <template
-          v-for="({ component, isVisible, title, subtitle, titleStyles, subtitleStyles }) in forms"
-          :key="component"
+          v-for="({ id, component, isVisible, componentName, fieldName, title, subtitle, titleStyles, subtitleStyles }) in forms"
+          :key="id"
         >
           <component
             v-if="isVisible"
             :is="component"
+            :component-name="componentName"
+            :field-name="fieldName"
             :title="title"
             :subtitle="subtitle"
             :title-styles="titleStyles"
@@ -50,15 +52,15 @@ import { useForm } from 'vee-validate';
 import { useRender } from '@/composables';
 import { configUI } from '@/config';
 import { USER_INTERACTION_FIELDS } from '@/config/constants';
-import { UserSelectedValueI } from '@/types';
+import { UserSelectedValueI, SelectConfigItemI } from '@/types';
 
 import UserCheckbox from '@/components/inputs/UserCheckbox.vue';
 import SubmitBtn from '@/components/buttons/SubmitBtn.vue';
 
 const userSelectedValues = ref<UserSelectedValueI>({});
 
-const select = ref<any>(null);
-const options = [
+const select = ref<SelectConfigItemI | null>(null);
+const options: SelectConfigItemI[] = [
   {
     label: 'config-1',
     layout: {
@@ -102,7 +104,9 @@ const onSubmit = handleSubmit((values) => {
 });
 
 const forms = computed(() => {
-  if (select.value) useRender('style', '', '', select.value.layout)
+  if (select.value) {
+    useRender('style', '', select.value.layout);
+  }
   
   const { fullName, radio, dropdown } = configUI.value;
 

@@ -7,5 +7,5 @@
     rounded
     unelevated
     class="q-mt-auto"
- />
+  />
 </template>

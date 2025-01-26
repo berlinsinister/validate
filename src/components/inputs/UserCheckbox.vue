@@ -1,10 +1,10 @@
 <template>
   <user-field
-    component-name="q-option-group"
-    field-name="checkbox"
+    :component-name="Q_COMPONENTS_NAMES.Q_OPTION_GROUP"
+    :field-name="FIELDS_NAMES.CHECKBOX"
   />
 </template>
 
 <script setup lang="ts">
-import UserField from '@/components/inputs/UserField.vue';
+import { Q_COMPONENTS_NAMES, FIELDS_NAMES } from '@/config/constants';
 </script>

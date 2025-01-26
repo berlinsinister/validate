@@ -1,32 +1,34 @@
 <template>
-  <component
-    v-model="value"
-    :is="props.componentName"
-    :error="!!errorMessage"
-    :error-message="errorMessage"
-    :options="fieldOptions"
+  <div>
+    <component
+      v-model="value"
+      :is="props.componentName"
+      :error="!!errorMessage"
+      :error-message="errorMessage"
+      :options="fieldOptions"
 
-    filled
-    dense
-    inline
-    hide-bottom-space
+      filled
+      dense
+      inline
+      hide-bottom-space
 
-    :type="type"
+      :type="type"
 
-    @update:model-value="onUpdateModelValue"
-  />
-  
-  <div
-    v-if="error"
-    role="alert"
-    class="error-txt"
-  >
-    {{ errorMessage }}
+      @update:model-value="onUpdateModelValue"
+    />
+    
+    <div
+      v-if="error"
+      role="alert"
+      class="error-txt"
+    >
+      {{ errorMessage }}
+    </div>
   </div>
 </template>
     
 <script setup lang="ts">
-import { computed, defineProps, onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useValidate, useRender } from '@/composables';
 import { UserFieldPropsI } from '@/types';
 import { FIELDS_NAMES, Q_COMPONENTS_NAMES } from '@/config/constants';
@@ -53,7 +55,7 @@ const error = computed<boolean>(() => (props.fieldName === FIELDS_NAMES.RADIO ||
 
 const onUpdateModelValue = (newValue: string | string[]): void => {
   if (props.fieldName === FIELDS_NAMES.CHECKBOX) {
-    useRender('visibility', props.fieldName, newValue, null);
+    useRender('visibility', newValue);
   }
 };
 </script>

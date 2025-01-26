@@ -1,5 +1,8 @@
+import { useAttrs } from 'vue';
+import type { StyleValue } from 'vue';
 import { useField } from 'vee-validate';
 import { setCssVar } from 'quasar'
+
 import { configFields, configUI } from '@/config';
 import { USER_INTERACTION_FIELDS } from '@/config/constants';
 
@@ -26,10 +29,14 @@ export const useValidate = (name: string) => {
 // render ui
 export const useRender = (
   renderType: 'visibility' | 'style',
-  fieldName: string,
   modelValue: string | string[],
-  layout: any,
+  configLayout?: {
+    styles: Record<string, string>;
+    order: Record<string, number>;
+  },
 ) => {
+  const layout = configLayout || { styles: {}, order: {} };
+
   switch (renderType) {
     case 'visibility':
       Object.keys(configUI.value).forEach((key) => {
@@ -39,9 +46,9 @@ export const useRender = (
 
     case 'style':
       USER_INTERACTION_FIELDS.forEach((item) => {
-        configUI.value[item].titleStyles.fontSize = layout.styles.fontSize;
-        configUI.value[item].titleStyles.backgroundColor = layout.styles.backgroundColor;
-        configUI.value[item].titleStyles.color = layout.styles.color;
+        (configUI.value[item].titleStyles as Record<string, string | number>).fontSize = layout.styles.fontSize;
+        (configUI.value[item].titleStyles as Record<string, string | number>).backgroundColor = layout.styles.backgroundColor;
+        (configUI.value[item].titleStyles as Record<string, string | number>).color = layout.styles.color;
 
         configUI.value[item].order = layout.order[item];
       });
@@ -51,5 +58,26 @@ export const useRender = (
   
     default:
       break;
+  }
+}
+
+export const useAttributes = () => {
+  const attrs = useAttrs();
+  
+  const componentName: string = attrs['component-name'] as string || '';
+  const fieldName: string = attrs['field-name'] as string || '';
+
+  const title: string = attrs['title'] as string || '';
+  const subtitle: string = attrs['subtitle'] as string || '';
+  const titleStyles: StyleValue = attrs['title-styles'] as StyleValue || {};
+  const subtitleStyles: StyleValue = attrs['subtitle-styles'] as StyleValue || {};
+
+  return {
+    componentName,
+    fieldName,
+    title,
+    subtitle,
+    titleStyles,
+    subtitleStyles,
   }
 }

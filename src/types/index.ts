@@ -20,11 +20,13 @@ export interface ConfigFieldI {
 }
 
 export interface ConfigUIItemI {
+  id: string;
   title: string;
   subtitle: string;
-  titleStyles: any; // StyleValue;
+  titleStyles: StyleValue;
   subtitleStyles: StyleValue;
   componentName: string;
+  fieldName: string;
   component: string;
   isVisible: boolean;
   order: number;
@@ -44,4 +46,12 @@ export interface FieldValidationInfoI {
 
 export interface UserSelectedValueI {
   [key: string] : string;
+}
+
+export interface SelectConfigItemI {
+  label: string;
+  layout: {
+    styles: Record<string, string>;
+    order: Record<string, number>;
+  };
 }
