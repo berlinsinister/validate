@@ -2,8 +2,8 @@
   <div>
     <q-select
       label="Config select"
-      v-model="select"
-      :options="options"
+      v-model="selectConfigModel"
+      :options="selectConfigOptions"
       dense
       class="q-mb-sm"
     />
@@ -42,61 +42,26 @@ import { ref, computed } from 'vue';
 import { useForm } from 'vee-validate';
 
 import { useRender } from '@/composables';
-import { configUI } from '@/config';
+import { configUI, selectConfigOptions } from '@/config';
 import { USER_INTERACTION_FIELDS } from '@/config/constants';
 import { UserSelectedValueI, SelectConfigItemI } from '@/types';
 
 import SubmitBtn from '@/components/buttons/SubmitBtn.vue';
 
 const userSelectedValues = ref<UserSelectedValueI>({});
-
-const select = ref<SelectConfigItemI | null>(null);
-const options: SelectConfigItemI[] = [
-  {
-    label: 'config-1',
-    layout: {
-      styles: {
-        fontSize: '24px',
-        color: '#ffffff',
-        backgroundColor: 'mediumseagreen',
-      },
-      order: {
-        fullName: 1,
-        radio: 2,
-        dropdown: 3,
-      },
-    },
-  },
-  {
-    label: 'config-2',
-    layout: {
-      styles: {
-        fontSize: '12px',
-        color: '#000',
-        backgroundColor: 'magenta',
-      },
-      order: {
-        fullName: 3,
-        radio: 1,
-        dropdown: 2,
-      },
-    },
-  },
-]
+const selectConfigModel = ref<SelectConfigItemI | null>(null);
 
 const { handleSubmit } = useForm();
 
 const onSubmit = handleSubmit((values) => {
-  console.log('FORM', values);
-
   USER_INTERACTION_FIELDS.forEach((item) => {
     userSelectedValues.value[item] = values[item]
   });
 });
 
 const forms = computed(() => {
-  if (select.value) {
-    useRender('style', '', select.value.layout);
+  if (selectConfigModel.value) {
+    useRender('style', '', selectConfigModel.value.layout);
   }
   
   const { checkbox, fullName, radio, dropdown } = configUI.value;

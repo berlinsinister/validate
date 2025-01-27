@@ -31,11 +31,12 @@ export const useRender = (
   renderType: 'visibility' | 'style',
   modelValue: string | string[],
   configLayout?: {
-    styles: Record<string, string>;
+    titleStyles: Record<string, string>;
+    subtitleStyles: Record<string, string>;
     order: Record<string, number>;
   },
 ) => {
-  const layout = configLayout || { styles: {}, order: {} };
+  const layout = configLayout || { titleStyles: {}, subtitleStyles: {}, order: {} };
 
   switch (renderType) {
     case 'visibility':
@@ -48,14 +49,16 @@ export const useRender = (
 
     case 'style':
       USER_INTERACTION_FIELDS.forEach((item) => {
-        (configUI.value[item].titleStyles as Record<string, string | number>).fontSize = layout.styles.fontSize;
-        (configUI.value[item].titleStyles as Record<string, string | number>).backgroundColor = layout.styles.backgroundColor;
-        (configUI.value[item].titleStyles as Record<string, string | number>).color = layout.styles.color;
+        (configUI.value[item].titleStyles as Record<string, string | number>).fontSize = layout.titleStyles.fontSize;
+        (configUI.value[item].titleStyles as Record<string, string | number>).backgroundColor = layout.titleStyles.backgroundColor;
+        (configUI.value[item].titleStyles as Record<string, string | number>).color = layout.titleStyles.color;
+
+        (configUI.value[item].subtitleStyles as Record<string, string | number>).color = layout.subtitleStyles.color;
 
         configUI.value[item].order = layout.order[item];
       });
 
-      setCssVar('primary', layout.styles.backgroundColor);
+      setCssVar('primary', layout.titleStyles.backgroundColor);
       break;
   
     default:

@@ -1,6 +1,6 @@
 import type { StyleValue } from "vue";
 
-export interface OptionI {
+export interface FieldOptionI {
   label: string;
   value: string | boolean;
 }
@@ -16,7 +16,7 @@ export interface ConfigFieldI {
     fieldName: string;
     rules: string;
     model: string | string[];
-    options?: OptionI[] | string[];
+    options?: FieldOptionI[] | string[];
   }
 }
 
@@ -53,7 +53,8 @@ export interface UserSelectedValueI {
 export interface SelectConfigItemI {
   label: string;
   layout: {
-    styles: Record<string, string>;
+    titleStyles: Record<string, string>;
+    subtitleStyles: Record<string, string>;
     order: Record<string, number>;
   };
 }
