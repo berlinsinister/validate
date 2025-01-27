@@ -29,18 +29,16 @@
 </template>
     
 <script setup lang="ts">
-import { computed, onMounted } from 'vue';
+import { computed } from 'vue';
 import { useValidate, useRender } from '@/composables';
-import { UserFieldPropsI, OptionI } from '@/types';
+import { UserFieldPropsI, FieldOptionI } from '@/types';
 import { FIELDS_NAMES, Q_COMPONENTS_NAMES } from '@/config/constants';
 
 const props = defineProps<UserFieldPropsI>();
 
-onMounted(() => {console.log('mounted', props.fieldName)});
-
 const { errorMessage, value, options } = useValidate(props.fieldName);
 
-const fieldOptions = computed<OptionI[] | string[] | null>(() =>
+const fieldOptions = computed<FieldOptionI[] | string[] | null>(() =>
   (props.componentName === Q_COMPONENTS_NAMES.Q_OPTION_GROUP || props.componentName === Q_COMPONENTS_NAMES.Q_SELECT) && options
     ? options
     : null,

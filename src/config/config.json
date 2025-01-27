@@ -6,15 +6,15 @@
       "title": "Lets get to know you",
       "subtitle": "Enter your first name using [A-Z][a-z] format only",
       "titleStyles": {
-        "marginBottom": "4px",
+        "marginBottom": "0px",
         "padding": "0px",
         "fontSize": "14px",
-        "lineHeight": "28px",
+        "lineHeight": "20px",
         "color": "#333333",
         "backgroundColor": "#ffffff"
       },
       "subtitleStyles": {
-        "marginBottom": "16px",
+        "marginBottom": "8px",
         "fontSize": "12px",
         "lineHeight": "18px",
         "color": "#333333",
@@ -32,15 +32,15 @@
       "title": "What is your favorite season",
       "subtitle": "Which time of year makes you feel at ease?",
       "titleStyles": {
-        "marginBottom": "4px",
+        "marginBottom": "0px",
         "padding": "0px",
         "fontSize": "14px",
-        "lineHeight": "28px",
+        "lineHeight": "20px",
         "color": "#333333",
         "backgroundColor": "#ffffff"
       },
       "subtitleStyles": {
-        "marginBottom": "16px",
+        "marginBottom": "8px",
         "fontSize": "12px",
         "lineHeight": "18px",
         "color": "#333333",
@@ -58,15 +58,15 @@
       "title": "Choose your go-to tech",
       "subtitle": "What gadget or innovation excites you the most?",
       "titleStyles": {
-        "marginBottom": "4px",
+        "marginBottom": "0px",
         "padding": "0px",
         "fontSize": "14px",
-        "lineHeight": "28px",
+        "lineHeight": "20px",
         "color": "#333333",
         "backgroundColor": "#ffffff"
       },
       "subtitleStyles": {
-        "marginBottom": "16px",
+        "marginBottom": "8px",
         "fontSize": "12px",
         "lineHeight": "18px",
         "color": "#333333",
@@ -84,15 +84,15 @@
       "title": "Start creating a form by selectin forms' elements",
       "subtitle": "",
       "titleStyles": {
-        "marginBottom": "4px",
+        "marginBottom": "0px",
         "padding": "0px",
         "fontSize": "14px",
-        "lineHeight": "28px",
+        "lineHeight": "20px",
         "color": "#333333",
         "backgroundColor": "#ffffff"
       },
       "subtitleStyles": {
-        "marginBottom": "16px",
+        "marginBottom": "8px",
         "fontSize": "12px",
         "lineHeight": "18px",
         "color": "#333333",
@@ -138,5 +138,43 @@
         { "label": "Dropdown", "value": "dropdown" }
       ]
     }
-  }
+  },
+  "selectConfig": [
+    {
+      "label": "config-1",
+      "layout": {
+        "titleStyles": {
+          "fontSize": "20px",
+          "color": "#00d8ff",
+          "backgroundColor": "#121212"
+        },
+        "subtitleStyles": {
+          "color": "#00a0cc"
+        },
+        "order": {
+          "fullName": 1,
+          "radio": 2,
+          "dropdown": 3
+        }
+      }
+    },
+    {
+      "label": "config-2",
+      "layout": {
+        "titleStyles": {
+          "fontSize": "16px",
+          "color": "#ffffff",
+          "backgroundColor": "#ff006b"
+        },
+        "subtitleStyles": {
+          "color": "#cc0058"
+        },
+        "order": {
+          "fullName": 3,
+          "radio": 1,
+          "dropdown": 2
+        }
+      }
+    }
+  ]  
 }
