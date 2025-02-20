@@ -1,180 +1,67 @@
 {
-  "ui": {
-    "fullName": {
-      "id": "FN_0001",
-      "label": "First name",
-      "title": "Lets get to know you",
-      "subtitle": "Enter your first name using [A-Z][a-z] format only",
-      "titleStyles": {
-        "marginBottom": "0px",
-        "padding": "0px",
-        "fontSize": "14px",
-        "lineHeight": "20px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "subtitleStyles": {
-        "marginBottom": "8px",
-        "fontSize": "12px",
-        "lineHeight": "18px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "componentName": "q-input",
-      "fieldName": "fullName",
-      "component": "form-input",
-      "isVisible": false,
-      "order": 1
-    },
-    "radio": {
-      "id": "FN_0002",
-      "label": "",
-      "title": "What is your favorite season",
-      "subtitle": "Which time of year makes you feel at ease?",
-      "titleStyles": {
-        "marginBottom": "0px",
-        "padding": "0px",
-        "fontSize": "14px",
-        "lineHeight": "20px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "subtitleStyles": {
-        "marginBottom": "8px",
-        "fontSize": "12px",
-        "lineHeight": "18px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "componentName": "q-option-group",
-      "fieldName": "radio",
-      "component": "form-radio",
-      "isVisible": false,
-      "order": 2
-    },
-    "dropdown": {
-      "id": "FN_0003",
-      "label": "Fave tech",
-      "title": "Choose your go-to tech",
-      "subtitle": "What gadget or innovation excites you the most?",
-      "titleStyles": {
-        "marginBottom": "0px",
-        "padding": "0px",
-        "fontSize": "14px",
-        "lineHeight": "20px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "subtitleStyles": {
-        "marginBottom": "8px",
-        "fontSize": "12px",
-        "lineHeight": "18px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "componentName": "q-select",
-      "fieldName": "dropdown",
-      "component": "form-dropdown",
-      "isVisible": false,
-      "order": 3
-    },
-    "checkbox": {
-      "id": "FN_0004",
-      "label": "",
-      "title": "Start creating a form by selectin forms' elements",
-      "subtitle": "",
-      "titleStyles": {
-        "marginBottom": "0px",
-        "padding": "0px",
-        "fontSize": "14px",
-        "lineHeight": "20px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "subtitleStyles": {
-        "marginBottom": "8px",
-        "fontSize": "12px",
-        "lineHeight": "18px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "componentName": "q-option-group",
-      "fieldName": "checkbox",
-      "component": "form-checkbox",
-      "isVisible": true,
-      "order": 0
-    }
-  },
-  "fields": {
-    "fullName": {
-      "fieldName": "fullName",
-      "rules": "required|min:3|max:30|alpha",
-      "model": ""
-    },
-    "radio": {
-      "fieldName": "radio",
-      "rules": "required",
-      "model": "",
-      "options": [
-        { "label": "Spring", "value": "spring" },
-        { "label": "Summer", "value": "summer" },
-        { "label": "Autumn", "value": "autumn" },
-        { "label": "Winter", "value": "winter" }
-      ]
-    },
-    "dropdown": {
-      "fieldName": "dropdown",
-      "rules": "required",
-      "model": "",
-      "options": ["Apple", "Google", "Facebook", "Open AI"]
-    },
-    "checkbox": {
-      "fieldName": "checkbox",
-      "rules": "required",
-      "model": [],
-      "options": [
-        { "label": "Full Name", "value": "fullName" },
-        { "label": "Radio", "value": "radio" },
-        { "label": "Dropdown", "value": "dropdown" }
-      ]
-    }
-  },
   "selectConfig": [
     {
       "label": "config-1",
-      "layout": {
-        "titleStyles": {
-          "fontSize": "20px",
-          "color": "#00d8ff",
-          "backgroundColor": "#121212"
+      "inputs": [
+        {
+          "uid": "INPUT_0001",
+          "controlElement": "input",
+          "quasarComponent": "q-input",
+          "isVisible": true,
+          "fieldName": "fullName",
+          "rules": "required|min:3|max:30|alpha",
+          "model": "",
+          "errorMessage": {
+            "required": "first name is required",
+            "min": "first name must be at least 3 characters length",
+            "max": "first name must be at most 30 characters long",
+            "alpha": "only letters [A-Z][a-z] allowed"
+          },
+          "title": "Lets get to know you",
+          "subtitle": "Enter your first name using [A-Z][a-z] format only",
+          "label": ""
         },
-        "subtitleStyles": {
-          "color": "#00a0cc"
+        {
+          "uid": "DROPDOWN_0001",
+          "controlElement": "dropdown",
+          "quasarComponent": "q-select",
+          "options": ["un", "dos", "tres"],
+          "isVisible": "radio === a",
+          "fieldName": "dropdown",
+          "rules": "required",
+          "model": "",
+          "errorMessage": {
+            "required": "pick something"
+          },
+          "title": "Choose another form element to add to the form",
+          "subtitle": "----",
+          "label": ""
         },
-        "order": {
-          "fullName": 1,
-          "radio": 2,
-          "dropdown": 3
+        {
+          "uid": "RADIO_0001",
+          "controlElement": "radio",
+          "quasarComponent": "q-option-group",
+          "options": [
+            { "label": "a", "value": "a" },
+            { "label": "b", "value": "b" },
+            { "label": "c", "value": "c" }
+          ],
+          "isVisible": true,
+          "fieldName": "radio",
+          "rules": "required",
+          "model": "",
+          "errorMessage": {
+            "required": "select one option"
+          },
+          "title": "Choose another form element to add to the form",
+          "subtitle": "----",
+          "label": ""
         }
-      }
+      ]
     },
     {
       "label": "config-2",
-      "layout": {
-        "titleStyles": {
-          "fontSize": "16px",
-          "color": "#ffffff",
-          "backgroundColor": "#ff006b"
-        },
-        "subtitleStyles": {
-          "color": "#cc0058"
-        },
-        "order": {
-          "fullName": 3,
-          "radio": 1,
-          "dropdown": 2
-        }
-      }
+      "inputs": []
     }
   ]  
 }
