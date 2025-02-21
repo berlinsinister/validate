@@ -5,6 +5,7 @@
         :is="quasarComponent"
         v-model="value"
         :options="options"
+        :label="label"
         :error="!!errorMessage"
         :error-message="errorMessage"
         filled
@@ -31,12 +32,12 @@ import { FIELDS_NAMES } from '@/config/constants';
 
 const props = defineProps<{ uid: string }>();
 
-const { errorMessage, value, options, fieldName, quasarComponent } = useValidate(props.uid);
+const { errorMessage, value, options, fieldName, quasarComponent, label } = useValidate(props.uid);
 const { setState } = useState();
 
-const error = computed<boolean>(() => fieldName === FIELDS_NAMES.RADIO && !!errorMessage);
+const error = computed<boolean>(() => (fieldName === FIELDS_NAMES.RADIO || fieldName === FIELDS_NAMES.CHECKBOX) && !!errorMessage);
 
-const onUpdateModelValue = (fieldName: string, newValue: string | string[]): void => {
+const onUpdateModelValue = (fieldName: string, newValue: string | string[] | boolean): void => {
   setState(fieldName, newValue);
 };
 </script>

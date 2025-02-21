@@ -4,9 +4,9 @@ import { getComponent } from '@/helpers';
 
 // validation
 export const useValidate = (uid: string) => {
-  const { fieldName, rules, model, options, quasarComponent } = getComponent(uid);
+  const { fieldName, rules, model, options, quasarComponent, label } = getComponent(uid);
 
-  const { errorMessage, value } = useField<string | string[]>(
+  const { errorMessage, value } = useField<string | string[] | boolean>(
     fieldName,
     rules,
     {
@@ -21,6 +21,7 @@ export const useValidate = (uid: string) => {
     options,
     fieldName,
     quasarComponent,
+    label,
   }
 };
 
@@ -28,9 +29,13 @@ export const useValidate = (uid: string) => {
 const state = ref<any>({});
 
 export const useState = () => {
-  const setState = (fieldName: string, newValue: string | string[]) => {
+  const setState = (fieldName: string, newValue: string | string[] | boolean) => {
     state.value = { ...state.value, [fieldName]: newValue };
   };
 
-  return { state, setState };
+  const clearState = () => {
+    state.value = {};
+  };
+
+  return { state, setState, clearState };
 };

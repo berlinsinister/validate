@@ -19,7 +19,7 @@
           },
           "title": "Lets get to know you",
           "subtitle": "Enter your first name using [A-Z][a-z] format only",
-          "label": ""
+          "label": "first name"
         },
         {
           "uid": "DROPDOWN_0001",
@@ -33,9 +33,9 @@
           "errorMessage": {
             "required": "pick something"
           },
-          "title": "Choose another form element to add to the form",
-          "subtitle": "----",
-          "label": ""
+          "title": "",
+          "subtitle": "",
+          "label": "numbers"
         },
         {
           "uid": "RADIO_0001",
@@ -53,15 +53,47 @@
           "errorMessage": {
             "required": "select one option"
           },
-          "title": "Choose another form element to add to the form",
-          "subtitle": "----",
+          "title": "",
+          "subtitle": "",
           "label": ""
+        },
+        {
+          "uid": "CHECKBOX_0001",
+          "controlElement": "checkbox",
+          "quasarComponent": "q-checkbox",
+          "isVisible": true,
+          "fieldName": "checkbox",
+          "rules": "required",
+          "model": false,
+          "errorMessage": {
+            "required": "you must agree to terms and conditions"
+          },
+          "title": "",
+          "subtitle": "",
+          "label": "terms and conditions"
         }
       ]
     },
     {
       "label": "config-2",
-      "inputs": []
+      "inputs": [
+        {
+          "uid": "DROPDOWN_0002",
+          "controlElement": "dropdown",
+          "quasarComponent": "q-select",
+          "options": ["mango", "avocado", "kiwi"],
+          "isVisible": true,
+          "fieldName": "dropdownTwo",
+          "rules": "required",
+          "model": "",
+          "errorMessage": {
+            "required": "pick fruit"
+          },
+          "title": "",
+          "subtitle": "",
+          "label": "fruits"
+        }
+      ]
     }
-  ]  
+  ]
 }

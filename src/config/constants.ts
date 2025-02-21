@@ -3,6 +3,7 @@ export const FIELDS_NAMES = {
   RADIO: 'radio',
   DROPDOWN: 'dropdown',
   CHECKBOX: 'checkbox',
+  DROPDOWN_TWO: 'dropdownTwo',
 };
 
 export const Q_COMPONENTS_NAMES = {
@@ -15,4 +16,6 @@ export const USER_INTERACTION_FIELDS = [
   FIELDS_NAMES.FULLNAME,
   FIELDS_NAMES.RADIO,
   FIELDS_NAMES.DROPDOWN,
+  FIELDS_NAMES.CHECKBOX,
+  FIELDS_NAMES.DROPDOWN_TWO,
 ];
