@@ -12,7 +12,7 @@
         dense
         inline
         hide-bottom-space
-        @update:model-value="(val: any) => onUpdateModelValue(fieldName, val)"
+        @update:model-value="(val: ModelT) => onUpdateModelValue(fieldName, val)"
       />
     </div>
     <div
@@ -26,8 +26,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useState, useValidate } from '@/composables';
+import { ModelT } from '@/types';
 import { FIELDS_NAMES } from '@/config/constants';
 
 const props = defineProps<{ uid: string }>();
@@ -37,7 +38,7 @@ const { setState } = useState();
 
 const error = computed<boolean>(() => (fieldName === FIELDS_NAMES.RADIO || fieldName === FIELDS_NAMES.CHECKBOX) && !!errorMessage);
 
-const onUpdateModelValue = (fieldName: string, newValue: string | string[] | boolean): void => {
+const onUpdateModelValue = (fieldName: string, newValue: ModelT): void => {
   setState(fieldName, newValue);
 };
 </script>

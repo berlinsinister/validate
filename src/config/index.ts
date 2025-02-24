@@ -1,4 +1,4 @@
-import config from '@/config/config.json';
-// import { SelectConfigItemI } from '@/types';
+import data from '@/config/config.json';
+import { ConfigI } from '@/types';
 
-export const selectConfigOptions: any[] = [ ...config.selectConfig ];
+export const config: ConfigI[] = [ ...data.config ];

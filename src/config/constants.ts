@@ -1,3 +1,4 @@
+// TODO: expand as the inputs will add
 export const FIELDS_NAMES = {
   FULLNAME: 'fullName',
   RADIO: 'radio',
@@ -12,6 +13,7 @@ export const Q_COMPONENTS_NAMES = {
   Q_SELECT: 'q-select',
 };
 
+// TODO: expand as the inputs will add
 export const USER_INTERACTION_FIELDS = [
   FIELDS_NAMES.FULLNAME,
   FIELDS_NAMES.RADIO,
