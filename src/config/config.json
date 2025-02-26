@@ -7,7 +7,7 @@
           "uid": "INPUT_0001",
           "controlElement": "input",
           "quasarComponent": "q-input",
-          "isVisible": true,
+          "isVisible": "checkbox === true",
           "fieldName": "fullName",
           "rules": "required|min:3|max:30|alpha",
           "model": "",
@@ -61,7 +61,7 @@
           "uid": "CHECKBOX_0001",
           "controlElement": "checkbox",
           "quasarComponent": "q-checkbox",
-          "isVisible": true,
+          "isVisible": "radio === b",
           "fieldName": "checkbox",
           "rules": "required",
           "model": false,
@@ -81,17 +81,33 @@
           "uid": "DROPDOWN_0002",
           "controlElement": "dropdown",
           "quasarComponent": "q-select",
-          "options": ["mango", "avocado", "kiwi"],
+          "options": ["languages", "sports"],
           "isVisible": true,
           "fieldName": "dropdownTwo",
           "rules": "required",
           "model": "",
           "errorMessage": {
-            "required": "pick fruit"
+            "required": "select hobby"
           },
           "title": "",
           "subtitle": "",
-          "label": "fruits"
+          "label": "hobby"
+        },
+        {
+          "uid": "DROPDOWN_0003",
+          "controlElement": "dropdown",
+          "quasarComponent": "q-select",
+          "options": ["spanish", "japanese", "finnish"],
+          "isVisible": "dropdownTwo === languages",
+          "fieldName": "dropdownThree",
+          "rules": "required",
+          "model": "",
+          "errorMessage": {
+            "required": "select a language"
+          },
+          "title": "",
+          "subtitle": "",
+          "label": "languages"
         }
       ]
     }

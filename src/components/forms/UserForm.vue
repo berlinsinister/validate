@@ -12,6 +12,10 @@
       </span>
     </div>
 
+    <p style="border: 1px solid blue">checkbox: {{ state.checkbox }}</p>
+    <p style="border: 1px solid cyan">dropdown: {{ state.dropdown }}</p>
+    <p style="border: 1px solid lime">fullname: {{ state.fullName }}</p>
+
     <q-select
       v-model="selectConfigModel"
       :options="config"
@@ -26,7 +30,7 @@
 
     <q-form @submit="onSubmit">
       <template
-        v-for="input in render"
+        v-for="input in computedRender"
         :key="input.uid"
       >
         <field-base :uid="input.uid" />
@@ -44,6 +48,7 @@ import { useState } from '@/composables';
 import { config } from '@/config';
 // import { USER_INTERACTION_FIELDS } from '@/config/constants';
 import { ConfigI, InputConfigI, UserSelectedValueI } from '@/types';
+import { filterInputs } from '@/helpers';
 
 import SubmitBtn from '@/components/buttons/SubmitBtn.vue';
 import FieldBase from '@/components/inputs/FieldBase.vue';
@@ -61,41 +66,19 @@ const onSubmit = handleSubmit((values) => {
 });
 
 // NEW
-const render = ref<InputConfigI[] | null>(null);
 const { state, clearState } = useState();
 
-const filterInputs = (inputs: InputConfigI[], radioValue: string) => {
-  return inputs.filter((input) => {
-    // TODO: change condition to more specific. e.g. not just 'input.controlElement === 'dropdown'' etc
-    if (input.controlElement === 'dropdown' && input.isVisible === 'radio === a') {
-      return radioValue === 'a'; // show dropdown if radio === "a"
-    }
-    return input.isVisible === true;
-  });
-};
+const computedRender = computed<InputConfigI[] | null>(() => {
+  if (!selectConfigModel.value) return null;
+  return filterInputs(selectConfigModel.value.inputs, state.value);
+});
 
 watch(
   () => selectConfigModel.value,
   (newConfig, oldConfig) => {
-    if (!newConfig) return;
-
-    if (oldConfig && newConfig.label !== oldConfig.label) {
-      clearState(); // reset state when switching configs
+    if (newConfig && oldConfig && newConfig.label !== oldConfig.label) {
+      clearState();
     }
-
-    // to update render correctly when switching configs
-    render.value = filterInputs(newConfig.inputs, state.value.radio);
-  },
-  { deep: true },
-);
-
-watch(
-  () => state.value,
-  (newState) => {
-    if (!selectConfigModel.value) return;
-
-    console.log('STATE', newState);
-    render.value = filterInputs(selectConfigModel.value.inputs, newState.radio);
   },
   { deep: true },
 );

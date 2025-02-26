@@ -1,12 +1,17 @@
-export type ModelT = string | string[] | boolean;
+export type ModelT = string | boolean;
+
+interface StateBaseI {
+  [key: string]: string | boolean;
+}
 
 // TODO: expand as the inputs will add
-export interface StateI {
+export interface StateI extends StateBaseI {
   fullName: string;
   radio: string;
   dropdown: string;
   checkbox: boolean;
   dropdownTwo: string;
+  dropdownThree: string;
 }
 
 export interface FieldValidationInfoI {
@@ -52,4 +57,11 @@ export interface InputConfigI {
 export interface ConfigI {
   label: string;
   inputs: InputConfigI[];
+}
+
+// visibility settings
+export interface VisibilitySettingI {
+  uid: string;
+  fieldName: string;
+  isVisible: string;
 }
