@@ -1,11 +1,12 @@
 <template>
-  <div style="border: 1px solid lightcoral; padding: 20px">
+  <div class="q-pa-sm">
     <div>
       <component
         :is="quasarComponent"
         v-model="value"
         :options="options"
         :label="label"
+        :type="type"
         :error="!!errorMessage"
         :error-message="errorMessage"
         filled
@@ -36,7 +37,11 @@ const props = defineProps<{ uid: string }>();
 const { errorMessage, value, options, fieldName, quasarComponent, label } = useValidate(props.uid);
 const { setState } = useState();
 
-const error = computed<boolean>(() => (fieldName === FIELDS_NAMES.RADIO || fieldName === FIELDS_NAMES.CHECKBOX) && !!errorMessage);
+const error = computed<boolean>(() =>
+  (fieldName === FIELDS_NAMES.RADIO || fieldName === FIELDS_NAMES.CHECKBOX) && !!errorMessage);
+
+const type = computed<string>(() =>
+  (fieldName === FIELDS_NAMES.PASSWORD || fieldName === FIELDS_NAMES.RADIO) && fieldName || '');
 
 const onUpdateModelValue = (fieldName: string, newValue: ModelT): void => {
   setState(fieldName, newValue);

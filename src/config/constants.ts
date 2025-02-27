@@ -6,6 +6,7 @@ export const FIELDS_NAMES = {
   CHECKBOX: 'checkbox',
   DROPDOWN_TWO: 'dropdownTwo',
   DROPDOWN_THREE: 'dropdownThree',
+  PASSWORD: 'password',
 };
 
 export const Q_COMPONENTS_NAMES = {
@@ -22,4 +23,5 @@ export const USER_INTERACTION_FIELDS = [
   FIELDS_NAMES.CHECKBOX,
   FIELDS_NAMES.DROPDOWN_TWO,
   FIELDS_NAMES.DROPDOWN_THREE,
+  FIELDS_NAMES.PASSWORD,
 ];

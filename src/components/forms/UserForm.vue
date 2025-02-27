@@ -1,20 +1,13 @@
 <template>
   <div style="width: 300px">
-    <div class="flex items-center q-mb-xl">
-      <q-icon
-        name="info"
-        color="primary"
-        size="24px"
-        class="q-mr-sm"
-      />
-      <span>
-        Select a config to start creating a form
-      </span>
+    <div class="data">
+      <p style="border: 1px solid blue">checkbox: {{ state.checkbox }}</p>
+      <p style="border: 1px solid cyan">dropdown: {{ state.dropdown }}</p>
+      <p style="border: 1px solid lime">fullname: {{ state.fullName }}</p>
+      <!-- config 2 -->
+      <p style="border: 1px solid salmon">dropdownThree: {{ state.dropdownThree }}</p>
+      <p style="border: 1px solid magenta">password: {{ state.password }}</p>
     </div>
-
-    <p style="border: 1px solid blue">checkbox: {{ state.checkbox }}</p>
-    <p style="border: 1px solid cyan">dropdown: {{ state.dropdown }}</p>
-    <p style="border: 1px solid lime">fullname: {{ state.fullName }}</p>
 
     <q-select
       v-model="selectConfigModel"
@@ -29,12 +22,11 @@
     </p> -->
 
     <q-form @submit="onSubmit">
-      <template
+      <field-base
         v-for="input in computedRender"
         :key="input.uid"
-      >
-        <field-base :uid="input.uid" />
-      </template>
+        :uid="input.uid"
+      />
       <submit-btn v-if="selectConfigModel" />
     </q-form>
   </div>
@@ -83,3 +75,17 @@ watch(
   { deep: true },
 );
 </script>
+
+<style lang="scss" scoped>
+.data {
+  margin-bottom: 20px;
+
+  p {
+    margin: 0;
+  }
+
+  p:nth-child(3) {
+    margin-bottom: 10px;
+  }
+}
+</style>

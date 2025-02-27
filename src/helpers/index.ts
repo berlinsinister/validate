@@ -1,5 +1,5 @@
 import { config } from '@/config';
-import { InputConfigI, VisibilitySettingI, StateI } from '@/types';
+import { InputConfigI, VisibilitySettingI, VisibilityRuleI, StateI } from '@/types';
 
 export const getComponent = (uid: string, fieldName = ''): InputConfigI => {
   const searchKey = fieldName ? 'fieldName' : 'uid';
@@ -17,17 +17,11 @@ export const filterInputs = (inputs: InputConfigI[], state: StateI): InputConfig
     }
 
     if (typeof input.isVisible === 'string') {
-      const stateMatch = input.isVisible.match(/^(\w+)\s*===\s*['"]?(\w+)['"]?$/);
+      const [field, value] = input.isVisible.split(' === ');
+      if (!field || !value) return false;
 
-      if (!stateMatch) {
-        return false;
-      }
-
-      const fieldName = stateMatch[1]; // eg 'radio'
-      const expectedValue = stateMatch[2] === 'true' ? true : stateMatch[2] === 'false' ? false : stateMatch[2]; // eg 'a' or 'true'
-
-      // check if the value in 'state' matches the expected value eg 'radio === a'
-      return state[fieldName] === expectedValue;
+      const expectedValue = value === 'true' ? true : value === 'false' ? false : value;
+      return state[field] === expectedValue;
     }
 
     return false;
@@ -46,14 +40,10 @@ export const getVisibilitySettings = (): VisibilitySettingI[] => {
   );
 };
 
-export const getVisibilityRules = (visibilitySettings: VisibilitySettingI[]) => {
-  return Object.fromEntries(
-    visibilitySettings.map(({ isVisible }) => [
-      isVisible,
-      (state: StateI) => {
-        const [field, value] = isVisible.split(' === ');
-        return state[field] === (value === 'true' ? true : value);
-      },
-    ]),
-  );
+export const getVisibilityRules = (visibilitySettings: VisibilitySettingI[]): VisibilityRuleI => {
+  return visibilitySettings.reduce((acc, { isVisible }) => {
+    const [field, value] = isVisible.split(' === ');
+    acc[isVisible] = (state: StateI) => state[field] === (value === 'true' ? true : value);
+    return acc;
+  }, {} as VisibilityRuleI);
 };

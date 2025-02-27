@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 import { useField } from 'vee-validate';
-import { ModelT, StateI, VisibilitySettingI } from '@/types';
+import { ModelT, StateI, VisibilitySettingI, VisibilityRuleI } from '@/types';
 import { getComponent, getVisibilitySettings, getVisibilityRules } from '@/helpers';
 import { FIELDS_NAMES } from '@/config/constants';
 
@@ -36,11 +36,12 @@ const initialState: StateI = {
   checkbox: false,
   dropdownTwo: '',
   dropdownThree: '',
+  password: '',
 };
 
 const state = ref<StateI>(initialState);
 const visibilitySettings: VisibilitySettingI[] = getVisibilitySettings();
-const visibilityRules = getVisibilityRules(visibilitySettings);
+const visibilityRules: VisibilityRuleI = getVisibilityRules(visibilitySettings);
 
 export const useState = () => {
   const setState = (fieldName: string, newValue: ModelT) => {
@@ -52,10 +53,10 @@ export const useState = () => {
       if (rule && !rule(state.value)) {
         // if the field is not visible, reset its value
         if (fieldName === FIELDS_NAMES.CHECKBOX) {
-          state.value[FIELDS_NAMES.CHECKBOX] = false;
-          state.value[FIELDS_NAMES.FULLNAME] = '';
+          state.value[FIELDS_NAMES.CHECKBOX] = initialState[FIELDS_NAMES.CHECKBOX];
+          state.value[FIELDS_NAMES.FULLNAME] = initialState[FIELDS_NAMES.FULLNAME];
         } else {
-          state.value[fieldName] = '';
+          state.value[fieldName] = initialState[fieldName];
         }
       }
     });

@@ -12,6 +12,7 @@ export interface StateI extends StateBaseI {
   checkbox: boolean;
   dropdownTwo: string;
   dropdownThree: string;
+  password: string;
 }
 
 export interface FieldValidationInfoI {
@@ -32,6 +33,7 @@ export interface ErrorMessageI {
   min?: string;
   max?: string;
   alpha?: string;
+  password?: string;
 }
 
 export interface OptionI {
@@ -46,7 +48,7 @@ export interface InputConfigI {
   isVisible: boolean | string; // string for conditional expression like ("radio === 'a'")
   fieldName: string;
   rules: string;
-  model: ModelT; // string | string[] | boolean;
+  model: ModelT;
   errorMessage: ErrorMessageI;
   title: string;
   subtitle: string;
@@ -59,9 +61,13 @@ export interface ConfigI {
   inputs: InputConfigI[];
 }
 
-// visibility settings
+// visibility
 export interface VisibilitySettingI {
   uid: string;
   fieldName: string;
   isVisible: string;
+}
+
+export interface VisibilityRuleI {
+  [key: string]: (state: StateI) => boolean;
 }
