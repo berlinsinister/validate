@@ -9,23 +9,22 @@
   transition: none !important;
 }
 
-.user-form {
+.form-wrapper {
+  width: 300px;
+
+  > p {
+    min-height: 60px;
+  }
+}
+
+.form-user {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  width: 400px;
-  min-height: 550px;
-  padding: 20px;
-  border-radius: 24px;
-  border: 1px solid #cccccc;
+  min-height: 300px;
 }
 
 .error-txt {
   padding: 8px 12px 0;
   font-size: 12px;
   color: #C10015;
-}
-
-.error-bg {
-  background-color: #C10015;
 }

@@ -28,7 +28,6 @@ export const useValidate = (uid: string) => {
 };
 
 // state
-// TODO: expand as the inputs will add
 const initialState: StateI = {
   fullName: '',
   radio: '',

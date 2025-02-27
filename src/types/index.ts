@@ -4,7 +4,6 @@ interface StateBaseI {
   [key: string]: string | boolean;
 }
 
-// TODO: expand as the inputs will add
 export interface StateI extends StateBaseI {
   fullName: string;
   radio: string;

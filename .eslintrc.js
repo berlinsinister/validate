@@ -17,5 +17,7 @@ module.exports = {
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     'comma-dangle': ['error', 'always-multiline'],
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+    'no-unused-vars': 'error',
+    'vue/no-unused-components': 'error',
   },
 };
