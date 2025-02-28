@@ -6,7 +6,7 @@ import { FIELDS_NAMES } from '@/config/constants';
 
 // validation
 export const useValidate = (uid: string) => {
-  const { fieldName, rules, model, options, quasarComponent, label } = getComponent(uid);
+  const { fieldName, rules, model, options, quasarComponent, label, title, subtitle } = getComponent(uid);
 
   const { errorMessage, value } = useField<ModelT>(
     fieldName,
@@ -24,6 +24,8 @@ export const useValidate = (uid: string) => {
     fieldName,
     quasarComponent,
     label,
+    title,
+    subtitle,
   }
 };
 

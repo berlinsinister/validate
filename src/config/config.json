@@ -25,16 +25,16 @@
           "uid": "DROPDOWN_0001",
           "controlElement": "dropdown",
           "quasarComponent": "q-select",
-          "options": ["un", "dos", "tres"],
+          "options": ["un", "dos", "tres", "cuatro", "cinco"],
           "isVisible": "radio === a",
           "fieldName": "dropdown",
           "rules": "required",
           "model": "",
           "errorMessage": {
-            "required": "pick something"
+            "required": "select any number"
           },
-          "title": "",
-          "subtitle": "",
+          "title": "Spanish numbers",
+          "subtitle": "Learn to count in spanish up to five",
           "label": "numbers"
         },
         {
@@ -51,10 +51,10 @@
           "rules": "required",
           "model": "",
           "errorMessage": {
-            "required": "select one option"
+            "required": "selecting a radio is a must!"
           },
-          "title": "",
-          "subtitle": "",
+          "title": "Radios",
+          "subtitle": "Selecting 'a' will show a dropdown. Selecting 'b' will show a checkbox. Selecting 'c' doesn't add any input field",
           "label": ""
         },
         {
@@ -66,11 +66,11 @@
           "rules": "required",
           "model": false,
           "errorMessage": {
-            "required": "you must agree to terms and conditions"
+            "required": "you must tick the checkbox"
           },
-          "title": "",
-          "subtitle": "",
-          "label": "terms and conditions"
+          "title": "Checkbox",
+          "subtitle": "Ticking this will make a first name input field appear!",
+          "label": "for first name input"
         }
       ]
     },
@@ -87,10 +87,10 @@
           "rules": "required",
           "model": "",
           "errorMessage": {
-            "required": "select hobby"
+            "required": "you must select a hobby"
           },
-          "title": "",
-          "subtitle": "",
+          "title": "Hobby",
+          "subtitle": "Select one of the available options (languages, sports or encryption)",
           "label": "hobby"
         },
         {
@@ -103,10 +103,10 @@
           "rules": "required",
           "model": "",
           "errorMessage": {
-            "required": "select a language"
+            "required": "you must select a language"
           },
-          "title": "",
-          "subtitle": "",
+          "title": "Languages",
+          "subtitle": "Select a language you are interested in",
           "label": "languages"
         },
         {
@@ -118,12 +118,12 @@
           "rules": "required|min:3|password",
           "model": "",
           "errorMessage": {
-            "required": "required",
-            "min": "cannot be shorter than 3 characters",
-            "password": "AT LEAST 1 uppercase letter, 1 lowercase letter, 1 number, 1 spec. char."
+            "required": "password is required",
+            "min": "password cannot be shorter than 3 characters",
+            "password": "password should have at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character"
           },
-          "title": "",
-          "subtitle": "",
+          "title": "Password",
+          "subtitle": "Password must contain uppercase and lowercase letters [A-Z][a-z] as well as numbers and special characters (e.g. %$^#*)",
           "label": "password"
         }
       ]

@@ -1,6 +1,10 @@
 <template>
   <div class="q-pa-sm">
     <div>
+      <p class="title">{{ title }}</p>
+      <p class="subtitle">{{ subtitle }}</p>
+    </div>
+    <div>
       <component
         :is="quasarComponent"
         v-model="value"
@@ -19,7 +23,7 @@
     <div
       v-if="error"
       role="alert"
-      class="error-txt"
+      class="error"
     >
       {{ errorMessage }}
     </div>
@@ -34,7 +38,7 @@ import { FIELDS_NAMES } from '@/config/constants';
 
 const props = defineProps<{ uid: string }>();
 
-const { errorMessage, value, options, fieldName, quasarComponent, label } = useValidate(props.uid);
+const { errorMessage, value, options, fieldName, quasarComponent, label, title, subtitle } = useValidate(props.uid);
 const { setState } = useState();
 
 const error = computed<boolean>(() =>
