@@ -59,14 +59,3 @@ export interface ConfigI {
   label: string;
   inputs: InputConfigI[];
 }
-
-// visibility
-export interface VisibilitySettingI {
-  uid: string;
-  fieldName: string;
-  isVisible: string;
-}
-
-export interface VisibilityRuleI {
-  [key: string]: (state: StateI) => boolean;
-}

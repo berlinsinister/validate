@@ -13,3 +13,5 @@ export const Q_COMPONENTS_NAMES = {
   Q_OPTION_GROUP: 'q-option-group',
   Q_SELECT: 'q-select',
 };
+
+export const VISIBLE_IF = 'visible_if';

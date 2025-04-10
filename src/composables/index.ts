@@ -1,8 +1,7 @@
 import { ref } from 'vue';
 import { useField } from 'vee-validate';
-import { ModelT, StateI, VisibilitySettingI, VisibilityRuleI } from '@/types';
-import { getComponent, getVisibilitySettings, getVisibilityRules } from '@/helpers';
-import { FIELDS_NAMES } from '@/config/constants';
+import { ModelT, StateI } from '@/types';
+import { getComponent } from '@/helpers';
 
 // validation
 export const useValidate = (uid: string) => {
@@ -41,31 +40,19 @@ const initialState: StateI = {
 };
 
 const state = ref<StateI>(initialState);
-const visibilitySettings: VisibilitySettingI[] = getVisibilitySettings();
-const visibilityRules: VisibilityRuleI = getVisibilityRules(visibilitySettings);
 
 export const useState = () => {
   const setState = (fieldName: string, newValue: ModelT) => {
     state.value = { ...state.value, [fieldName]: newValue };
+  };
 
-    visibilitySettings.forEach(({ isVisible, fieldName }) => {
-      const rule = visibilityRules[isVisible];
-    
-      if (rule && !rule(state.value)) {
-        // if the field is not visible, reset its value
-        if (fieldName === FIELDS_NAMES.CHECKBOX) {
-          state.value[FIELDS_NAMES.CHECKBOX] = initialState[FIELDS_NAMES.CHECKBOX];
-          state.value[FIELDS_NAMES.FULLNAME] = initialState[FIELDS_NAMES.FULLNAME];
-        } else {
-          state.value[fieldName] = initialState[fieldName];
-        }
-      }
-    });
+  const resetState = (fieldName: string) => {
+    state.value[fieldName] = initialState[fieldName];
   };
 
   const clearState = () => {
     state.value = { ...initialState };
   };
 
-  return { state, setState, clearState };
+  return { state, setState, resetState, clearState };
 };
