@@ -1,14 +1,13 @@
+import { ref } from 'vue';
 import { useField } from 'vee-validate';
-import { setCssVar } from 'quasar'
-
-import { configFields, configUI } from '@/config';
-import { USER_INTERACTION_FIELDS } from '@/config/constants';
+import { ModelT, StateI } from '@/types';
+import { getComponent } from '@/helpers';
 
 // validation
-export const useValidate = (name: string) => {
-  const { fieldName, rules, model, options } = configFields[name];
+export const useValidate = (uid: string) => {
+  const { fieldName, rules, model, options, quasarComponent, label, title, subtitle } = getComponent(uid);
 
-  const { errorMessage, value } = useField<string | string[]>(
+  const { errorMessage, value } = useField<ModelT>(
     fieldName,
     rules,
     {
@@ -21,59 +20,39 @@ export const useValidate = (name: string) => {
     errorMessage,
     value,
     options,
-  }
-}
-
-// render ui
-export const useRender = (
-  renderType: 'visibility' | 'style',
-  modelValue: string | string[],
-  configLayout?: {
-    titleStyles: Record<string, string>;
-    subtitleStyles: Record<string, string>;
-    order: Record<string, number>;
-  },
-) => {
-  const layout = configLayout || { titleStyles: {}, subtitleStyles: {}, order: {} };
-
-  switch (renderType) {
-    case 'visibility':
-      Object.keys(configUI.value).forEach((key) => {
-        configUI.value[key].isVisible = modelValue.includes(key);
-      });
-
-      configUI.value.checkbox.isVisible = true;
-      break;
-
-    case 'style':
-      USER_INTERACTION_FIELDS.forEach((item) => {
-        (configUI.value[item].titleStyles as Record<string, string | number>).fontSize = layout.titleStyles.fontSize;
-        (configUI.value[item].titleStyles as Record<string, string | number>).backgroundColor = layout.titleStyles.backgroundColor;
-        (configUI.value[item].titleStyles as Record<string, string | number>).color = layout.titleStyles.color;
-
-        (configUI.value[item].subtitleStyles as Record<string, string | number>).color = layout.subtitleStyles.color;
-
-        configUI.value[item].order = layout.order[item];
-      });
-
-      setCssVar('primary', layout.titleStyles.backgroundColor);
-      break;
-  
-    default:
-      break;
-  }
-}
-
-export const useComponentData = (name: string) => {
-  const { label, fieldName, componentName, title, subtitle, titleStyles, subtitleStyles } = configUI.value[name];
-
-  return {
-    label,
     fieldName,
-    componentName,
+    quasarComponent,
+    label,
     title,
     subtitle,
-    titleStyles,
-    subtitleStyles,
   }
-}
+};
+
+// state
+const initialState: StateI = {
+  fullName: '',
+  radio: '',
+  dropdown: '',
+  checkbox: false,
+  dropdownTwo: '',
+  dropdownThree: '',
+  password: '',
+};
+
+const state = ref<StateI>(initialState);
+
+export const useState = () => {
+  const setState = (fieldName: string, newValue: ModelT) => {
+    state.value = { ...state.value, [fieldName]: newValue };
+  };
+
+  const resetState = (fieldName: string) => {
+    state.value[fieldName] = initialState[fieldName];
+  };
+
+  const clearState = () => {
+    state.value = { ...initialState };
+  };
+
+  return { state, setState, resetState, clearState };
+};

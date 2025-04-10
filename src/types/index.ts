@@ -1,41 +1,17 @@
-import type { StyleValue } from "vue";
+export type ModelT = string | boolean;
 
-export interface FieldOptionI {
-  label: string;
-  value: string | boolean;
+interface StateBaseI {
+  [key: string]: string | boolean;
 }
 
-export interface UserFieldPropsI {
-  label: string;
-  componentName: string;
-  fieldName: string;
-}
-
-export interface ConfigFieldI {
-  [key: string]: {
-    fieldName: string;
-    rules: string;
-    model: string | string[];
-    options?: FieldOptionI[] | string[];
-  }
-}
-
-export interface ConfigUIItemI {
-  id: string;
-  label: string;
-  title: string;
-  subtitle: string;
-  titleStyles: StyleValue;
-  subtitleStyles: StyleValue;
-  componentName: string;
-  fieldName: string;
-  component: string;
-  isVisible: boolean;
-  order: number;
-}
-
-export interface ConfigUII {
-  [key: string]: ConfigUIItemI;
+export interface StateI extends StateBaseI {
+  fullName: string;
+  radio: string;
+  dropdown: string;
+  checkbox: boolean;
+  dropdownTwo: string;
+  dropdownThree: string;
+  password: string;
 }
 
 export interface FieldValidationInfoI {
@@ -50,11 +26,36 @@ export interface UserSelectedValueI {
   [key: string] : string;
 }
 
-export interface SelectConfigItemI {
+// config
+export interface ErrorMessageI {
+  required: string;
+  min?: string;
+  max?: string;
+  alpha?: string;
+  password?: string;
+}
+
+export interface OptionI {
   label: string;
-  layout: {
-    titleStyles: Record<string, string>;
-    subtitleStyles: Record<string, string>;
-    order: Record<string, number>;
-  };
+  value: string;
+}
+
+export interface InputConfigI {
+  uid: string;
+  controlElement: string;
+  quasarComponent: string;
+  isVisible: boolean | string; // string for conditional expression like ("radio === 'a'")
+  fieldName: string;
+  rules: string;
+  model: ModelT;
+  errorMessage: ErrorMessageI;
+  title: string;
+  subtitle: string;
+  label: string;
+  options?: string[] | OptionI[];
+}
+
+export interface ConfigI {
+  label: string;
+  inputs: InputConfigI[];
 }

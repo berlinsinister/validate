@@ -1,180 +1,132 @@
 {
-  "ui": {
-    "fullName": {
-      "id": "FN_0001",
-      "label": "First name",
-      "title": "Lets get to know you",
-      "subtitle": "Enter your first name using [A-Z][a-z] format only",
-      "titleStyles": {
-        "marginBottom": "0px",
-        "padding": "0px",
-        "fontSize": "14px",
-        "lineHeight": "20px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "subtitleStyles": {
-        "marginBottom": "8px",
-        "fontSize": "12px",
-        "lineHeight": "18px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "componentName": "q-input",
-      "fieldName": "fullName",
-      "component": "form-input",
-      "isVisible": false,
-      "order": 1
-    },
-    "radio": {
-      "id": "FN_0002",
-      "label": "",
-      "title": "What is your favorite season",
-      "subtitle": "Which time of year makes you feel at ease?",
-      "titleStyles": {
-        "marginBottom": "0px",
-        "padding": "0px",
-        "fontSize": "14px",
-        "lineHeight": "20px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "subtitleStyles": {
-        "marginBottom": "8px",
-        "fontSize": "12px",
-        "lineHeight": "18px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "componentName": "q-option-group",
-      "fieldName": "radio",
-      "component": "form-radio",
-      "isVisible": false,
-      "order": 2
-    },
-    "dropdown": {
-      "id": "FN_0003",
-      "label": "Fave tech",
-      "title": "Choose your go-to tech",
-      "subtitle": "What gadget or innovation excites you the most?",
-      "titleStyles": {
-        "marginBottom": "0px",
-        "padding": "0px",
-        "fontSize": "14px",
-        "lineHeight": "20px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "subtitleStyles": {
-        "marginBottom": "8px",
-        "fontSize": "12px",
-        "lineHeight": "18px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "componentName": "q-select",
-      "fieldName": "dropdown",
-      "component": "form-dropdown",
-      "isVisible": false,
-      "order": 3
-    },
-    "checkbox": {
-      "id": "FN_0004",
-      "label": "",
-      "title": "Start creating a form by selectin forms' elements",
-      "subtitle": "",
-      "titleStyles": {
-        "marginBottom": "0px",
-        "padding": "0px",
-        "fontSize": "14px",
-        "lineHeight": "20px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "subtitleStyles": {
-        "marginBottom": "8px",
-        "fontSize": "12px",
-        "lineHeight": "18px",
-        "color": "#333333",
-        "backgroundColor": "#ffffff"
-      },
-      "componentName": "q-option-group",
-      "fieldName": "checkbox",
-      "component": "form-checkbox",
-      "isVisible": true,
-      "order": 0
-    }
-  },
-  "fields": {
-    "fullName": {
-      "fieldName": "fullName",
-      "rules": "required|min:3|max:30|alpha",
-      "model": ""
-    },
-    "radio": {
-      "fieldName": "radio",
-      "rules": "required",
-      "model": "",
-      "options": [
-        { "label": "Spring", "value": "spring" },
-        { "label": "Summer", "value": "summer" },
-        { "label": "Autumn", "value": "autumn" },
-        { "label": "Winter", "value": "winter" }
-      ]
-    },
-    "dropdown": {
-      "fieldName": "dropdown",
-      "rules": "required",
-      "model": "",
-      "options": ["Apple", "Google", "Facebook", "Open AI"]
-    },
-    "checkbox": {
-      "fieldName": "checkbox",
-      "rules": "required",
-      "model": [],
-      "options": [
-        { "label": "Full Name", "value": "fullName" },
-        { "label": "Radio", "value": "radio" },
-        { "label": "Dropdown", "value": "dropdown" }
-      ]
-    }
-  },
-  "selectConfig": [
+  "config": [
     {
       "label": "config-1",
-      "layout": {
-        "titleStyles": {
-          "fontSize": "20px",
-          "color": "#00d8ff",
-          "backgroundColor": "#121212"
+      "inputs": [
+        {
+          "uid": "INPUT_0001",
+          "controlElement": "input",
+          "quasarComponent": "q-input",
+          "isVisible": "checkbox === true",
+          "fieldName": "fullName",
+          "rules": "required|min:3|max:30|alpha",
+          "model": "",
+          "errorMessage": {
+            "required": "first name is required",
+            "min": "first name must be at least 3 characters length",
+            "max": "first name must be at most 30 characters long",
+            "alpha": "only letters [A-Z][a-z] allowed"
+          },
+          "title": "Lets get to know you",
+          "subtitle": "Enter your first name using [A-Z][a-z] format only",
+          "label": "first name"
         },
-        "subtitleStyles": {
-          "color": "#00a0cc"
+        {
+          "uid": "DROPDOWN_0001",
+          "controlElement": "dropdown",
+          "quasarComponent": "q-select",
+          "options": ["un", "dos", "tres", "cuatro", "cinco"],
+          "isVisible": "radio === a",
+          "fieldName": "dropdown",
+          "rules": "required",
+          "model": "",
+          "errorMessage": {
+            "required": "select any number"
+          },
+          "title": "Spanish numbers",
+          "subtitle": "Learn to count in spanish up to five",
+          "label": "numbers"
         },
-        "order": {
-          "fullName": 1,
-          "radio": 2,
-          "dropdown": 3
+        {
+          "uid": "RADIO_0001",
+          "controlElement": "radio",
+          "quasarComponent": "q-option-group",
+          "options": [
+            { "label": "a", "value": "a" },
+            { "label": "b", "value": "b" },
+            { "label": "c", "value": "c" }
+          ],
+          "isVisible": true,
+          "fieldName": "radio",
+          "rules": "required",
+          "model": "",
+          "errorMessage": {
+            "required": "selecting a radio is a must!"
+          },
+          "title": "Radios",
+          "subtitle": "Selecting 'a' will show a dropdown. Selecting 'b' will show a checkbox. Selecting 'c' doesn't add any input field",
+          "label": ""
+        },
+        {
+          "uid": "CHECKBOX_0001",
+          "controlElement": "checkbox",
+          "quasarComponent": "q-checkbox",
+          "isVisible": "radio === b",
+          "fieldName": "checkbox",
+          "rules": "required",
+          "model": false,
+          "errorMessage": {
+            "required": "you must tick the checkbox"
+          },
+          "title": "Checkbox",
+          "subtitle": "Ticking this will make a first name input field appear!",
+          "label": "for first name input"
         }
-      }
+      ]
     },
     {
       "label": "config-2",
-      "layout": {
-        "titleStyles": {
-          "fontSize": "16px",
-          "color": "#ffffff",
-          "backgroundColor": "#ff006b"
+      "inputs": [
+        {
+          "uid": "DROPDOWN_0002",
+          "controlElement": "dropdown",
+          "quasarComponent": "q-select",
+          "options": ["languages", "sports", "encryption"],
+          "isVisible": true,
+          "fieldName": "dropdownTwo",
+          "rules": "required",
+          "model": "",
+          "errorMessage": {
+            "required": "you must select a hobby"
+          },
+          "title": "Hobby",
+          "subtitle": "Select one of the available options (languages, sports or encryption)",
+          "label": "hobby"
         },
-        "subtitleStyles": {
-          "color": "#cc0058"
+        {
+          "uid": "DROPDOWN_0003",
+          "controlElement": "dropdown",
+          "quasarComponent": "q-select",
+          "options": ["spanish", "japanese", "finnish"],
+          "isVisible": "dropdownTwo === languages",
+          "fieldName": "dropdownThree",
+          "rules": "required",
+          "model": "",
+          "errorMessage": {
+            "required": "you must select a language"
+          },
+          "title": "Languages",
+          "subtitle": "Select a language you are interested in",
+          "label": "languages"
         },
-        "order": {
-          "fullName": 3,
-          "radio": 1,
-          "dropdown": 2
+        {
+          "uid": "INPUT_0002",
+          "controlElement": "input",
+          "quasarComponent": "q-input",
+          "isVisible": "dropdownTwo === encryption",
+          "fieldName": "password",
+          "rules": "required|min:3|password",
+          "model": "",
+          "errorMessage": {
+            "required": "password is required",
+            "min": "password cannot be shorter than 3 characters",
+            "password": "password should have at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character"
+          },
+          "title": "Password",
+          "subtitle": "Password must contain uppercase and lowercase letters [A-Z][a-z] as well as numbers and special characters (e.g. %$^#*)",
+          "label": "password"
         }
-      }
+      ]
     }
-  ]  
+  ]
 }

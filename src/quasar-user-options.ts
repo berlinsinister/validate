@@ -2,7 +2,7 @@ import "./styles/quasar.scss";
 import "@quasar/extras/roboto-font/roboto-font.css";
 import "@quasar/extras/material-icons/material-icons.css";
 
-import { QInput, QOptionGroup, QSelect } from 'quasar';
+import { QInput, QOptionGroup, QSelect, QCheckbox } from 'quasar';
 
 export default {
   config: {},
@@ -11,5 +11,6 @@ export default {
     QInput,
     QOptionGroup,
     QSelect,
+    QCheckbox,
   },
 };

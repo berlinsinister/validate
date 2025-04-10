@@ -1,65 +1,64 @@
 <template>
-  <div>
-    <q-select
-      label="Config select"
-      v-model="selectConfigModel"
-      :options="selectConfigOptions"
-      dense
-      class="q-mb-sm"
-    />
-
-    <p class="q-mb-xl">
+  <div class="form-wrapper">
+    <p>
       selected values: {{ userSelectedValues }}
     </p>
 
-    <q-form @submit="onSubmit">
-      <div class="user-form">
-        <template
-          v-for="({ id, isVisible, fieldName }) in forms"
-          :key="id"
-        >
-          <form-base
-            v-if="isVisible"
-            :field-name="fieldName"
-          />
-        </template>
+    <q-select
+      v-model="selectConfigModel"
+      :options="config"
+      label="Config select"
+      dense
+      class="q-mb-lg"
+    />
 
-        <submit-btn />
-      </div>
+    <q-form
+      class="form-user"
+      @submit="onSubmit"
+    >
+      <field-wrapper
+        v-for="input in renderedInputs"
+        :key="input.uid"
+        :input="input"
+      />
+      <submit-btn v-if="selectConfigModel" />
     </q-form>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, watch } from 'vue';
 import { useForm } from 'vee-validate';
 
-import { useRender } from '@/composables';
-import { configUI, selectConfigOptions } from '@/config';
-import { USER_INTERACTION_FIELDS } from '@/config/constants';
-import { UserSelectedValueI, SelectConfigItemI } from '@/types';
+import { useState } from '@/composables';
+import { config } from '@/config';
+import { ConfigI, InputConfigI, UserSelectedValueI } from '@/types';
 
-import FormBase from '@/components/forms/FormBase.vue';
 import SubmitBtn from '@/components/buttons/SubmitBtn.vue';
+import FieldWrapper from '@/components/inputs/FieldWrapper.vue';
 
 const userSelectedValues = ref<UserSelectedValueI>({});
-const selectConfigModel = ref<SelectConfigItemI | null>(null);
+const selectConfigModel = ref<ConfigI | null>(null);
+
+const { clearState } = useState();
+
+const renderedInputs = ref<InputConfigI[] | null>(null);
+
+watch(
+  selectConfigModel,
+  (newConfig, oldConfig) => {
+    if (newConfig && oldConfig && newConfig.label !== oldConfig.label) {
+      clearState();
+    }
+
+    renderedInputs.value = newConfig?.inputs || [];
+  },
+  { deep: true },
+);
 
 const { handleSubmit } = useForm();
 
 const onSubmit = handleSubmit((values) => {
-  USER_INTERACTION_FIELDS.forEach((item) => {
-    userSelectedValues.value[item] = values[item]
-  });
-});
-
-const forms = computed(() => {
-  if (selectConfigModel.value) {
-    useRender('style', '', selectConfigModel.value.layout);
-  }
-  
-  const { checkbox, fullName, radio, dropdown } = configUI.value;
-
-  return [checkbox, fullName, radio, dropdown].sort((a, b) => a.order - b.order);
+  userSelectedValues.value = values;
 });
 </script>

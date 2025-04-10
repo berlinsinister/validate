@@ -3,6 +3,9 @@ export const FIELDS_NAMES = {
   RADIO: 'radio',
   DROPDOWN: 'dropdown',
   CHECKBOX: 'checkbox',
+  DROPDOWN_TWO: 'dropdownTwo',
+  DROPDOWN_THREE: 'dropdownThree',
+  PASSWORD: 'password',
 };
 
 export const Q_COMPONENTS_NAMES = {
@@ -11,8 +14,4 @@ export const Q_COMPONENTS_NAMES = {
   Q_SELECT: 'q-select',
 };
 
-export const USER_INTERACTION_FIELDS = [
-  FIELDS_NAMES.FULLNAME,
-  FIELDS_NAMES.RADIO,
-  FIELDS_NAMES.DROPDOWN,
-];
+export const VISIBLE_IF = 'visible_if';
